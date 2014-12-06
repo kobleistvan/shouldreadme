@@ -113,7 +113,7 @@ module.exports = function (grunt) {
                     namespace: 'JST'
                 },
                 files: {
-                    '<%= yeoman.app %>/javascripts/templates.js': ['<%= yeoman.app %>/javascripts/templates/**/*.hbs']
+                    '<%= yeoman.app %>/dist/javascripts/templates.js': ['<%= yeoman.app %>/javascripts/templates/**/*.hbs']
                 }
             }
         },
