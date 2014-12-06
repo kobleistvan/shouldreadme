@@ -15,7 +15,9 @@
     "grunt": "^0.4.5",
     "connect-livereload": "^0.5.2",
     "time-grunt": "^1.0.0",
-    "load-grunt-tasks": "^1.0.0"
+    "load-grunt-tasks": "^1.0.0",
+    "concat": "^1.0.0",
+    "grunt-bower-concat": "^0.4.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
