@@ -1,8 +1,7 @@
 package ShouldReadMe;
 use Dancer2;
 
-use User::User;
-use Api::Api;
+use Api::User;
 
 our $VERSION = '0.1';
 
