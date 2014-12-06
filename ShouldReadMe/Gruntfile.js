@@ -40,7 +40,7 @@ module.exports = function (grunt) {
                 files: [
                     '<%= yeoman.app %>/*.html',
                     '{.tmp,<%= yeoman.app %>}/css/*.css',
-                    '{.tmp,<%= yeoman.app %>}/javascripts/*.js',
+                    '{.tmp,<%= yeoman.app %>}/javascripts/**/*.js',
                     '<%= yeoman.app %>/images/*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/javascripts/templates/**/*.{ejs,mustache,hbs}'
                 ]
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
                 files: [
                     '<%= yeoman.app %>/*.html',
                     '{.tmp,<%= yeoman.app %>}/css/*.css',
-                    '{.tmp,<%= yeoman.app %>}/javascripts/*.js',
+                    '{.tmp,<%= yeoman.app %>}/javascripts/**/*.js',
                     '<%= yeoman.app %>/images/*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/javascripts/templates/**/*.{ejs,mustache,hbs}'
                 ],
