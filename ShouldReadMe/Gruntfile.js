@@ -22,6 +22,7 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         app: 'public',
+        dist: 'public/dist'
     };
 
     grunt.initConfig({
@@ -53,7 +54,7 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/javascripts/templates/**/*.{ejs,mustache,hbs}'
                 ],
-                tasks: ['handlebars', 'sass:dev', 'copy:main', 'concat']
+                tasks: ['handlebars', 'concat']
             }
         },
         connect: {
@@ -85,24 +86,25 @@ module.exports = function (grunt) {
         },
 
         concat: {
-            'root/dist/styles/main.css': [
-                'root/styles/main.css'
+            'public/dist/css/main.css': [
+                'public/css/main.css'
             ],
 
-            'root/dist/scripts/vendor.js':
+            'public/dist/javascripts/vendor.js':
             [ 
-                'root/bower_components/jquery/dist/jquery.js',
-                'root/bower_components/underscore/underscore.js',
-                'root/bower_components/backbone/backbone.js',
-                'root/bower_components/moment/moment.js',
-                'root/bower_components/handlebars/handlebars.min.js',
-                'root/bower_components/Backbone.Handlebars/lib/backbone_handlebars.js',
-                'root/bower_components/jquery-ui/ui/minified/jquery-ui.min.js',
-                'root/bower_components/backbone.stickit/backbone.stickit.js',
+                'bower_components/jquery/dist/jquery.js',
+                'bower_components/underscore/underscore.js',
+                'bower_components/backbone/backbone.js',
+                'bower_components/moment/moment.js',
+                'bower_components/handlebars/handlebars.min.js',
+                'bower_components/Backbone.Handlebars/lib/backbone_handlebars.js',
+                'bower_components/jquery-ui/ui/minified/jquery-ui.min.js',
+                'bower_components/backbone.stickit/backbone.stickit.js',
             ],
 
-            'root/dist/scripts/main.js':
+            'public/dist/javascripts/main.js':
             [
+                'public/javascripts/models/icon.js',
             ],
         },
         handlebars: {
