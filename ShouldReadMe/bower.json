@@ -25,6 +25,7 @@
     "jquery-ui": "~1.11.2",
     "Backbone.Handlebars": "~1.0.0",
     "bootstrap": "~3.3.1",
-    "backbone.stickit": "~0.8.0"
+    "backbone.stickit": "~0.8.0",
+    "fontawesome": "~4.2.0"
   }
 }
