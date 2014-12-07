@@ -132,6 +132,7 @@ module.exports = function (grunt) {
             'public/dist/javascripts/main.js':
             [
                 'public/javascripts/models/icon.js',
+                'public/javascripts/views/launch/launch.js',
             ],
         },
         handlebars: {

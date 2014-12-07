@@ -1,11 +1,3 @@
-/*global SRM, Backbone*/
-
-SRM.Models = SRM.Models || {};
-
-(function () {
-    'use strict';
-    
-})();
 $("document").ready(function($){
     var nav = $('.main-menu');
 
