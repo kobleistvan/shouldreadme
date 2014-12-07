@@ -5,11 +5,11 @@ SRM.Views = SRM.Views || {};
 (function () {
     'use strict';
 
-    SRM.Views.Faqs = Backbone.View.extend({
-        template: JST['public/javascripts/templates/dashboard/faqs.hbs'],
-        el: '.faq-section',
+    SRM.Views.Quiz = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/quiz.hbs'],
+        el: '.quiz-section',
         events: {
-            'toggle .toggle.faq-toggle': 'toggleKnob',
+            'toggle .toggle.quiz-toggle': 'toggleKnob',
         },
 
         initialize: function (options) {
@@ -22,7 +22,7 @@ SRM.Views = SRM.Views || {};
 
         render: function() {
             this.renderTemplate(this.templateData());
-            $('.faq-toggle').toggles({
+            $('.quiz-toggle').toggles({
                 clickable: !$(this).hasClass('noclick'),
                 dragable: !$(this).hasClass('nodrag'),
                 click: ($(this).attr('rel')) ? $('.'+$(this).attr('rel')) : undefined,
@@ -37,14 +37,14 @@ SRM.Views = SRM.Views || {};
         
         toggleKnob : function (e, active) {
             if (active) 
-                $(".faq-container").removeClass("hide");
+                $(".quiz-container").removeClass("hide");
             else 
-                $(".faq-container").addClass("hide");
-            this.toggleFaqSection();
+                $(".quiz-container").addClass("hide");
+            this.toggleQuizSection();
         },
         
-        toggleFaqSection: function() {
-            this.options.parent.trigger('togglefaqpanel');
+        toggleQuizSection: function() {
+            this.options.parent.trigger('togglequizpanel');
         },
     });
 

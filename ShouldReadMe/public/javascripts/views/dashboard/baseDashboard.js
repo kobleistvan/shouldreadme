@@ -30,12 +30,18 @@ SRM.Views = SRM.Views || {};
 
             this.faqPanel = new SRM.Views.FaqPanel({parent: this});
             this.faqPanel.render();
+
+            this.quizPanel = new SRM.Views.QuizPanel({parent: this});
+            this.quizPanel.render();
             
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
 
             SRM.faqsContainer = new SRM.Views.Faqs({parent: this});
             SRM.faqsContainer.render();
+
+            SRM.quizContainer = new SRM.Views.Quiz({parent: this});
+            SRM.quizContainer.render();
 
             return this;
         }
