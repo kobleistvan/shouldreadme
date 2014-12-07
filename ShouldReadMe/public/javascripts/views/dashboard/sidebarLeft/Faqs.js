@@ -37,13 +37,18 @@ SRM.Views = SRM.Views || {};
 
             return this;
         },
+        
         toggleKnob : function (e, active) {
-          if (active) {
-            $(".faq-content").removeClass("hide");
-          } else {
-            $(".faq-content").addClass("hide");
-          }
-        }
+            if (active) 
+                $(".faq-container").removeClass("hide");
+            else 
+                $(".faq-container").addClass("hide");
+            this.toggleFaqSection();
+        },
+        
+        toggleFaqSection: function() {
+            this.options.parent.trigger('togglefaqpanel');
+        },
     });
 
 })();

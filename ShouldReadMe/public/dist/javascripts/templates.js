@@ -1,7 +1,7 @@
 this["JST"] = this["JST"] || {};
 
 this["JST"]["public/javascripts/templates/dashboard/baseDashboard.hbs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<nav class=\"menu navbar-fixed-top navbar navbar-inverse\" role=\"navigation\">\n    <div class=\"container-fluid\">\n        <!-- Collect the nav links, forms, and other content for toggling -->\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n            <img class=\"small-logo\" src=\"/images/ourlogopng.png\">\n            <ul class=\"main-menu-list nav navbar-nav\">\n                <li><a href=\"#coming-soon\"> Sign in </a></li>\n                <li><a href=\"#\"> Get started </a></li>\n                <li><a href=\"#coming-soon\"> Coming soon </a></li>\n                <li><a href=\"#\"><img class=\"help-icon\" src=\"/images/help.png\"></a></li>\n            </ul>\n        </div>\n    </div>\n</nav> <!-- END  menu section -->\n\n<div class=\"container-fluid editor-container\">\n    <!-- instructions -->\n    <div class=\"instructions\">\n        <h3>How to use it</h3>\n        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum\n        </p>\n    </div><!-- END instructions -->\n    <!-- grouped content -->\n    <div class=\"grouped-content row\">\n        <!-- ICONS FAQ Quiz -->\n        <div class=\"customization-section col-md-3\">\n            <!-- icons section -->\n            <div class=\"icons-subsection\">\n            </div><!-- END icons section-->\n            <!-- FAQ section -->\n            <div class=\"faq-section\">\n            \n            </div><!-- END FAQ section -->\n            <!-- quiz section -->\n            <div class=\"quiz-section\">\n            </div><!-- END quiz section -->\n        </div><!-- END customize section-->\n        \n        <!-- preview section -->\n        <div class=\"preview-section col-md-6\">\n            <div class=\"edit-panel\"> </div>\n            <div class=\"faq-panel\"> </div>\n            <div class=\"quiz-panel\"> </div>\n        </div><!-- END preview section-->\n        \n        <!-- tips section -->\n        <div class=\"col-md-3\">\n            <div class=\"tips-section\"> </div>\n        </div><!-- END tips section-->\n    </div>\n</div>";
+  return "<nav class=\"menu navbar-fixed-top navbar navbar-inverse\" role=\"navigation\">\n    <div class=\"container-fluid\">\n        <!-- Collect the nav links, forms, and other content for toggling -->\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n            <img class=\"small-logo\" src=\"/images/ourlogopng.png\">\n            <ul class=\"main-menu-list nav navbar-nav\">\n                <li><a href=\"#coming-soon\"> Sign in </a></li>\n                <li><a href=\"#\"> Get started </a></li>\n                <li><a href=\"#coming-soon\"> Coming soon </a></li>\n                <li><a href=\"#\"><img class=\"help-icon\" src=\"/images/help.png\"></a></li>\n            </ul>\n        </div>\n    </div>\n</nav> <!-- END  menu section -->\n\n<div class=\"container-fluid editor-container\">\n    <!-- instructions -->\n    <div class=\"instructions\">\n        <h3>How to use it</h3>\n        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum\n        </p>\n    </div><!-- END instructions -->\n    <!-- grouped content -->\n    <div class=\"grouped-content row\">\n        <!-- ICONS FAQ Quiz -->\n        <div class=\"customization-section col-md-3\">\n            <!-- icons section -->\n            <div class=\"icons-subsection\">\n            </div><!-- END icons section-->\n            <!-- FAQ section -->\n            <div class=\"faq-section\">\n            \n            </div><!-- END FAQ section -->\n            <!-- quiz section -->\n            <div class=\"quiz-section\">\n            </div><!-- END quiz section -->\n        </div><!-- END customize section-->\n        \n        <!-- preview section -->\n        <div class=\"preview-section col-md-6\">\n            <div class=\"edit-panel\"> </div>\n            <div class=\"faq-panel hide\"> </div>\n            <div class=\"quiz-panel hide\"> </div>\n        </div><!-- END preview section-->\n        \n        <!-- tips section -->\n        <div class=\"col-md-3\">\n            <div class=\"tips-section\"> </div>\n        </div><!-- END tips section-->\n    </div>\n</div>";
   },"useData":true});
 
 
@@ -9,6 +9,22 @@ this["JST"]["public/javascripts/templates/dashboard/baseDashboard.hbs"] = Handle
 this["JST"]["public/javascripts/templates/dashboard/editPanelComponents/editPanel.hbs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   return "<h3>Preview</h3>\n<div class=\"preview-container\" >\n    \n</div>";
   },"useData":true});
+
+
+
+this["JST"]["public/javascripts/templates/dashboard/editPanelComponents/faqPanel.hbs"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "    \n    <div class=\"faq-stub panel panel-default\">\n        <div class=\"panel-heading\">\n            <h4 class=\"panel-title\">"
+    + escapeExpression(((helper = (helper = helpers.question || (depth0 != null ? depth0.question : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"question","hash":{},"data":data}) : helper)))
+    + "</h4>\n        </div>\n        <div class=\"panel-body\">\n            <p>"
+    + escapeExpression(((helper = (helper = helpers.answer || (depth0 != null ? depth0.answer : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"answer","hash":{},"data":data}) : helper)))
+    + "</p>\n        </div>\n    </div>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, buffer = "<h3>Frequently Asked Questions</h3>\n<div class=\"preview-faq-container\">\n";
+  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.faqstubs : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "</div>";
+},"useData":true});
 
 
 
@@ -24,7 +40,7 @@ this["JST"]["public/javascripts/templates/dashboard/editPanelComponents/printIte
 
 
 this["JST"]["public/javascripts/templates/dashboard/faqs.hbs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<div class=\"faq-head row\">\n    <h3>FAQ</h3>\n    <div class=\"toggle on toggle-light faq-toggle\"></div>\n</div>\n\n<div class=\"faq-container hide\">\n    test???\n</div>\n";
+  return "<div class=\"faq-head row\">\n    <h3>FAQ</h3>\n    <div class=\"toggle on toggle-light faq-toggle\"></div>\n</div>\n\n<div class=\"faq-container hide\">\n    <p>Only default frequently asked questions and answers will be added at the moment. Customizable FAQ content coming soon!</p>\n</div>\n";
   },"useData":true});
 
 

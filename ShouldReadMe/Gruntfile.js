@@ -139,6 +139,7 @@ module.exports = function (grunt) {
                 'public/javascripts/views/dashboard/dashboardContent/colorMenu.js',
                 'public/javascripts/views/dashboard/dashboardContent/printItem.js',
                 'public/javascripts/views/dashboard/dashboardContent/editPanel.js',
+                'public/javascripts/views/dashboard/dashboardContent/faqPanel.js',
                 'public/javascripts/views/dashboard/sidebarRight/tips.js',
                 'public/javascripts/views/dashboard/sidebarLeft/Icons.js',
                 'public/javascripts/views/dashboard/sidebarLeft/Faqs.js',
