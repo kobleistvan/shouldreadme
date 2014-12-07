@@ -1,12 +1,19 @@
 package ShouldReadMe::Controller::Api;
 use Dancer2 appname => 'ShouldReadMe';
-use Dancer2::Plugin::Database;
+use Dancer2::Plugin::Ajax;
+
+use Digest::SHA1 qw(sha1_hex);
+use Dancer2::Plugin::DBIC qw(schema resultset rset);
 
 prefix '/icon' => sub {
     get '/' => sub {
-        my $icons = database->quick_select($table_name, {});
-        warn to_dumper $icons;
+         my $icons = resultset('Icon')->search();
+        #  warn to_dumper \@icons;
          
+         while( my $icon = $icons->next){
+            warn to_dumper $icon->file_name();
+         }
+        template 'index';
     };
     
     post '/' => sub {
@@ -17,6 +24,11 @@ prefix '/icon' => sub {
     };
     
     del '/' => sub {
+    };
+    
+    # I want to test if backbone calls this or get. This may be used for simple jquery-ajax calls.
+    ajax '/:user' => sub {
+         to_json({'status'=>'ajax call successfull call'});
     };
     
 };

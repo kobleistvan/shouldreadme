@@ -30,7 +30,7 @@ SRM.Models = SRM.Models || {};
 
     SRM.Models.Icon = Backbone.Model.extend({
 
-        url: '/api/icon',
+        // url: '/api/icon',
 
         initialize: function() {
         },
@@ -63,7 +63,7 @@ SRM.Collections = SRM.Collections || {};
 
     SRM.Collections.SidebarIcons = Backbone.Collection.extend({
         model: SRM.Models.Icon,
-        url: '/api/icon',
+        url: '/icon',
         
         parse: function(response, options)  {
             return response.icons;

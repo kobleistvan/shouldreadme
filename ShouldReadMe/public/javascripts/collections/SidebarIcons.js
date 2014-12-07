@@ -7,7 +7,7 @@ SRM.Collections = SRM.Collections || {};
 
     SRM.Collections.SidebarIcons = Backbone.Collection.extend({
         model: SRM.Models.Icon,
-        url: '/api/icon',
+        url: '/icon',
         
         parse: function(response, options)  {
             return response.icons;

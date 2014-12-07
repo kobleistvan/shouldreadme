@@ -7,7 +7,7 @@ SRM.Models = SRM.Models || {};
 
     SRM.Models.Icon = Backbone.Model.extend({
 
-        url: '/api/icon',
+        // url: '/api/icon',
 
         initialize: function() {
         },

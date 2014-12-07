@@ -2,6 +2,8 @@ package ShouldReadMe;
 use Dancer2;
 
 use Controller::Api::User;
+use Controller::Api::Icon;
+
 use Digest::SHA1 qw(sha1_hex);
 use Dancer2::Plugin::DBIC qw(schema resultset rset);
 
@@ -85,6 +87,7 @@ post '/register' => sub {
 
 # Last resort...
 any qr{.*} => sub {
+    warn "dassadd\n\n\n\n";
     template 'launch';
 };
 
