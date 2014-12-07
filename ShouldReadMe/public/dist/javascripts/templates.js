@@ -30,7 +30,7 @@ this["JST"]["public/javascripts/templates/dashboard/editPanelComponents/printIte
 
 
 this["JST"]["public/javascripts/templates/dashboard/faqs.hbs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  return "<h3>Frequently Asked Questions</h3>\n\n    <div class=\"faq-container\">\n        test???\n    </div>\n";
+  return "<div class=\"faq-head row\">\n    <h3>Frequently Asked Questions</h3>\n</div>\n\n    <div class=\"faq-container\">\n        test???\n    </div>\n";
   },"useData":true});
 
 
