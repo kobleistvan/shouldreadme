@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title>ShoulReadMe</title>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+            <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+            <link rel="stylesheet" href="jquery-toggles-master/css/toggles.css">
+            <link rel="stylesheet" href="jquery-toggles-master/css/toggles-full.css">
+            <link rel="stylesheet" href="jquery-toggles-master/css/themes/toggles-light.css">
+            <link rel="stylesheet" href="main.css">
+            <script type="text/javascript" src="jquery-2.1.1.js"></script>
+            <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+            <script src="jquery-toggles-master/toggles.js" type="text/javascript"></script>
+
+            <script type="text/javascript" src="mainjs.js"></script>
+            <script>
+                $("document").ready(function($){
+                    $('.toggle').each(function() {
+                      $(this).toggles({
+                            clickable: !$(this).hasClass('noclick'),
+                            dragable: !$(this).hasClass('nodrag'),
+                            click: ($(this).attr('rel')) ? $('.'+$(this).attr('rel')) : undefined,
+                            on: false,
+                            checkbox: ($(this).data('checkbox')) ? $('.'+$(this).data('checkbox')) : undefined,
+                            ontext: $(this).data('ontext') || 'ON',
+                            offtext: $(this).data('offtext') || 'OFF'
+                       });
+                    });
+
+                    // Getting notified of changes, and the new state:
+                    $('.toggle.faq-toggle').on('toggle', function (e, active) {
+                      if (active) {
+                        $(".faq-content").removeClass("hide");
+                      } else {
+                        $(".faq-content").addClass("hide");
+                      }
+                    });
+                    $('.toggle.quiz-toggle').on('toggle', function (e, active) {
+                      if (active) {
+                        $(".quiz-content").removeClass("hide");
+                      } else {
+                        $(".quiz-content").addClass("hide");
+                      }
+                    });
+
+                    //icon bkg color
+                    $(".icon-colors li").click(function(){
+                        var $color =  $(this).attr("id");
+                        $(this).closest(".preview-item").find(".preview-icon-border").css("background-color",$color);
+                    });
+                });
+            </script>
+    </head>
+    <body>
+        <nav class="menu navbar-fixed-top navbar navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <img class="small-logo" src="ourlogopng.png">
+                    <ul class="main-menu-list nav navbar-nav">
+                        <li><a href="#coming-soon"> Sign in </a></li>
+                        <li><a href="#"> Get started </a></li>
+                        <li><a href="#coming-soon"> Coming soon </a></li>
+                        <li><a href="#"><img class="help-icon" src="help.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav> <!-- END  menu section -->
+
+        <div class="container-fluid editor-container">
+            <!-- instructions -->
+            <div class="instructions">
+                <h3>How to use it</h3>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                </p>
+            </div><!-- END instructions -->
+            <!-- grouped content -->
+            <div class="grouped-content row">
+                <!-- customize section -->
+                <div class="customization-section col-md-3">
+                    <!-- icons section -->
+                    <div class="icons-subsection">
+                        <h3>Icons</h3>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="1"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="2"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="3"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="4"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="5"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="6"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="7"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="8"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="9"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="10"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="11"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="12"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="13"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="14"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="15"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="16"></div>
+                        <div class="icon-container"><img src="images/batman.png" class="default-icon" id="17"></div>
+                    </div><!-- END icons section-->
+                    <!-- FAQ section -->
+                    <div class="faq-section">
+                        <div class="faq-head row">
+                            <h4>Frequently Asked Questions</h4>
+                            <div class="toggle on toggle-light faq-toggle"></div>
+                        </div>
+                        <div class="faq-content hide">
+                            <p>AICI VOR FI FAQ-URILE</p>
+                        </div>
+                    </div><!-- END FAQ section -->
+                    <!-- quiz section -->
+                    <div class="quiz-section">
+                        <div class="quiz-head row">
+                            <h4>Quiz</h4>
+                            <div class="toggle on toggle-light quiz-toggle"></div>
+                        </div>
+                        <div class="quiz-content hide">
+                            <p>AICI VOR FI QUIZURILE</p>
+                        </div>
+                    </div><!-- END quiz section -->
+                </div><!-- END customize section-->
+                <!-- preview section -->
+                <div class="preview-section col-md-6">
+                    <h3>Preview</h3>
+                    <div class="preview-container" >
+                        
+                        <!-- example -->
+                        <div class="preview-item" id="1">
+                            <div class="icon-colors">
+                                <ul>
+                                    <li class="white-bgk" id="white"></li>
+                                    <li class="red-bkg" id="#e8221c"></li>
+                                    <li class="green-bkg" id="#59AC59"></li>
+                                    <li class="blue-bkg" id="#65B5EB"></li>
+                                </ul>
+                            </div>
+                            <div class="preview-icon-border"><img src="images/batman.png" class="preview-icon"></div>
+                            <input type="text" name="tooplip_text" placeholder="Tooltip">
+                        </div><!-- END example -->
+                        <!-- example -->
+                        <div class="preview-item" id="1">
+                            <div class="icon-colors">
+                                <ul>
+                                    <li class="white-bgk" id="white"></li>
+                                    <li class="red-bkg" id="red"></li>
+                                    <li class="green-bkg" id="green"></li>
+                                    <li class="blue-bkg" id="blue"></li>
+                                </ul>
+                            </div>
+                            <div class="preview-icon-border"><img src="images/batman.png" class="preview-icon"></div>
+                            <input type="text" name="tooplip_text" placeholder="Tooltip">
+                        </div><!-- END example -->
+                        <!-- example -->
+                        <div class="preview-item" id="1">
+                            <div class="icon-colors">
+                                <ul>
+                                    <li class="white-bgk" id="white"></li>
+                                    <li class="red-bkg" id="red"></li>
+                                    <li class="green-bkg" id="green"></li>
+                                    <li class="blue-bkg" id="blue"></li>
+                                </ul>
+                            </div>
+                            <div class="preview-icon-border"><img src="images/batman.png" class="preview-icon"></div>
+                            <input type="text" name="tooplip_text" placeholder="Tooltip">
+                        </div><!-- END example -->
+                        <!-- example -->
+                        <div class="preview-item" id="1">
+                            <div class="icon-colors">
+                                <ul>
+                                    <li class="white-bgk" id="white"></li>
+                                    <li class="red-bkg" id="red"></li>
+                                    <li class="green-bkg" id="green"></li>
+                                    <li class="blue-bkg" id="blue"></li>
+                                </ul>
+                            </div>
+                            <div class="preview-icon-border"><img src="images/batman.png" class="preview-icon"></div>
+                            <input type="text" name="tooplip_text" placeholder="Tooltip">
+                        </div><!-- END example -->
+                    </div>
+                        
+                </div><!-- END preview section-->
+                <!-- tips section -->
+                <div class="tips-section col-md-3">
+                    <h3>Tips</h3>
+                    <div class="tips-content">
+                        <!-- example -->
+                        <p>Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                        </p>
+                        <p>Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                        </p>
+                        <p>Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                        </p>
+                        <p>Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                        </p><!--  END tips example -->
+                    </div>
+                </div><!-- END tips section-->
+            </div><!-- END grouped content -->
+        </div><!-- END container-->
+    </body>
+</html>
