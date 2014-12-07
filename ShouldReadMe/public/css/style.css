@@ -1,13 +1,44 @@
+/*rosu: #e8221c*/
+/*crem: #eadfd4*/
+/*turcoaz: #30D683*/
+/*dark-grey: #333333*/
+
+/*bootstrap overwritting*/
+.navbar-inverse .navbar-nav>li>a{
+	color: #eadfd4;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-inverse .navbar-nav>li>a:active,
+.navbar-inverse .navbar-nav>li>a:focus{
+	color: #e8221c;
+}
+
+h1, h2{
+	color: #e8221c;
+	text-align: center;
+
+}
+
+a{
+
+}
+
+.starting-options .col-md-4{
+	box-sizing: border-box;
+	padding:0 30px;	
+}
 
 /*header style*/
 .main-menu, .menu{
 	top:300px;
 	border:none;
 	height:65px;
-	background-color: black;
-	font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
-	font-size:25px;
+	background-color: #333333;
 	padding-top:5px;
+	font-family: 'PT Sans', sans-serif;
+	font-weight: 400;
+	font-size: 17px;
 }
 
 .menu{
@@ -43,8 +74,9 @@
 	height:auto;
 	overflow:hidden;
 	padding-top:50px;
-	background: url("/image/dark_texture.png") repeat 0% 0% #1c1c1c;
-	color: lightgray;
+	background: url("/images/dark_texture.png") repeat 0% 0% #1c1c1c;
+	color: #eadfd4;
+	font-family: 'PT Sans', sans-serif;
 }
 
 .cover{
@@ -59,6 +91,7 @@
 .btn-default{
 	min-width:100px;
 	margin:10px 50px;
+
 }
 
 .carousel-bkg{
@@ -89,8 +122,9 @@
 }
 
 .details-option{
-	border-left: 1px solid green;
-	border-right: 1px solid green;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	padding:0 15px;
 }
 
 h3{
@@ -111,25 +145,81 @@ h3{
 	color: gray;
 }
 
-.customization-section{
-	background-color: pink;
-	height:30px;
-}
-
 .default-icon{
 	width:60px;
 	height:60px;
+	margin:3px;
+}
+
+.icon-container{
+	border: 1px solid gray;
+	width:70px;
+	height:70px;
 	float: left;
-	padding:5px;
+	margin:5px;
+	overflow:hidden;
+	border-radius:50%;
 }
 
-.preview-section{
-	background-color: blue;
-}
-
+.preview-section,
+.icons-subsection,
+.faq-section,
+.quiz-section,
 .tips-section{
-	background-color: pink;
+	border: 1px solid gray;
 }
+
+.preview-icon{
+	width:70px;
+	height:70px;
+	margin:3px;	
+}
+
+.preview-icon-border{
+	border: 1px solid gray;
+	width:80px;
+	height:80px;
+	float: left;
+	margin:10px;
+	overflow:hidden;
+	border-radius:50%;
+}
+
+.preview-item{
+	width:150px;
+	height: 135px;
+	margin:10px;
+	display:inline-block;
+	overflow:hidden;
+}
+
+.preview-item input{
+	width:100%;
+}
+
+.icon-colors{
+	float:left;
+	padding: 0;
+	margin: 0;
+	height: 80px;
+	width: 27px;
+}
+
+.icon-colors ul{
+	padding: 0;
+	margin: 20px;
+}
+
+.icon-colors li{
+	display: block;
+	width: 10px;
+	height: 10px;
+	border: 1px solid gray;
+	border-radius: 50%;
+	margin-top: 3px;
+}
+
+
 /*footer style*/
 .main-footer {
 	background-color:black;
@@ -143,8 +233,46 @@ h3{
 	font-size:20px;	
 }
 
-.icons-section {
+
+.icons-subsection{
+	display: block;
+	overflow: hidden;
+	width: 100%;
 }
+
+.toggle{
+	width:50px;
+	display:inline;
+	float:right;
+}
+
+.toggle-on{
+	text-indent: 7px!important;
+}
+
+.faq-section, .quiz-section{
+	margin-top:50px;
+}
+
+.faq-head, .quiz-head{
+	display:inline;
+	width:100%;
+}
+
+.faq-head h4, .quiz-head h4{
+	float:left;
+	display:inline;
+	margin:0;
+}
+
+.tips-content{
+	padding:20px;
+}
+
+.tips-content p{
+	padding-top:10px;
+}
+
 
 /*colors*/
 
@@ -164,4 +292,21 @@ h3{
 	color:lightgray;
 }
 
+.white-bkg{
+	background-color: white ;
+}
 
+.red-bkg{
+	background-color: #e8221c;
+}
+.green-bkg{
+	background-color: #59AC59;
+}
+.blue-bkg{
+	/*background-color: #0099FF;*/
+background-color: #3EA2E6;
+}
+/*rosu: #e8221c*/
+/*crem: #eadfd4*/
+/*turcoaz: #30D683*/
+/*dark-grey: #333333*/
