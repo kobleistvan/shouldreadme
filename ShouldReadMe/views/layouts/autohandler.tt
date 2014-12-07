@@ -16,6 +16,9 @@
     <script src="dist/javascripts/main.js"></script>
 </head>
 <body>
-    <% content %>
+    <div id="main">
+        <% content %>
+    </div>
+    
 </body>
 </html>
