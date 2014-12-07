@@ -22,37 +22,44 @@ hook before => sub {
 };
 
 get '/' => sub {
-    warn session('requested_path');
-    warn "\n";
+    if (session('requested_path')){
+        warn session('requested_path');
+    }
     template 'launch';
 };
 
 get '/get_started' => sub {
-    warn session('get_started');
-    warn "\n";
+    if ( session('get_started')) {
+        warn session('get_started');
+    }
     template 'get_started';
 };
 
 # Validate the username and password they supplied
 post '/login' => sub {
-    if (params->{email} eq 'bob@bob.bob' && sha1_hex(params->{password}) eq 'bob') {
-        session user => params->{email};
+    if (!params->{email} || !params->{password}){
+        redirect '/#login';   
+    }
+    my $current_user = resultset('User')->search({-and => [password =>  sha1_hex(params->{password}), email => params->{email}] })->first();
+    if ($current_user) {
+        session user => $current_user->user_id;
         warn session('requested_path');
         my $requested = session('requested_path') ? session('requested_path') : '/#dashboard';
         session requested_path => undef;
         redirect $requested;
     } else {
-        redirect '/#login?failed=1';
+        warn 'login failed! \n';
+        redirect '/#login';
     }
 };
 
-# Register a new user and redirect him to dashboard
+# Register a new user and redirect him to dashboard. If already registered, redirect him to login.
 post '/register' => sub {
     if (params->{first_name} eq '' ||
-        params->{last_name} eq '' ||
-        params->{email} eq '' ||
-        params->{website} eq '' ||
-        params->{password} eq '' ||
+        params->{last_name} eq ''  ||
+        params->{email} eq ''      ||
+        params->{website} eq ''    ||
+        params->{password} eq ''   ||
         params->{password_confirmation} eq ''){
             warn "No empty fields allowed!\n";
             redirect '/#register';
@@ -68,18 +75,22 @@ post '/register' => sub {
         redirect '/#register';
     }
     
+    if (resultset('User')->search({-and => [website => params->{website}, email => params->{email}] })) {
+        warn "User already registered";
+        redirect '/#login';
+    }
+    
     my $newuser = resultset('User')->create({
             first_name => params->{first_name}, 
-            last_name => params->{last_name}, 
-            website => params->{website}, 
-            email => params->{email}, 
-            password => sha1_hex(params->{password}),
+            last_name  => params->{last_name}, 
+            website    => params->{website}, 
+            email      => params->{email}, 
+            password   => sha1_hex(params->{password}),
             created_at => undef
          }
     );
     
     redirect '/#get_started';
-    
 
 };
 
