@@ -7,7 +7,7 @@ SRM.Views = SRM.Views || {};
 
     SRM.Views.EditPanel = Backbone.View.extend({
         template: JST['public/javascripts/templates/dashboard/editPanelComponents/editPanel.hbs'],
-        el: '.preview-section',
+        el: '.edit-panel',
         events: {
         },
 

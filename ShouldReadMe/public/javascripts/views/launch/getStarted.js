@@ -3,12 +3,12 @@ $("document").ready(function($){
       event.preventDefault();
     });
 
-    $(".submit-option.active").click(function( ev){
+    $(".scratch-option").click(function( ev){
         ev.preventDefault();
         document.location.href = '/#dashboard'
     });
 
-    $(".open-options").click(function(ev){
+    $(".details-option").click(function(ev){
         ev.preventDefault();
         $(this).toggleClass("hide");
         $(".starting-methods p").toggleClass("hide");

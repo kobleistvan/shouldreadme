@@ -9,6 +9,7 @@ SRM.Views = SRM.Views || {};
         template: JST['public/javascripts/templates/dashboard/faqs.hbs'],
         el: '.faq-section',
         events: {
+            'toggle .toggle.faq-toggle': 'toggleKnob',
         },
 
         initialize: function (options) {
@@ -24,7 +25,24 @@ SRM.Views = SRM.Views || {};
 
         render: function() {
             this.renderTemplate(this.templateData());
+            $('.toggle').toggles({
+                clickable: !$(this).hasClass('noclick'),
+                dragable: !$(this).hasClass('nodrag'),
+                click: ($(this).attr('rel')) ? $('.'+$(this).attr('rel')) : undefined,
+                on: false,
+                checkbox: ($(this).data('checkbox')) ? $('.'+$(this).data('checkbox')) : undefined,
+                ontext: $(this).data('ontext') || 'ON',
+                offtext: $(this).data('offtext') || 'OFF'
+            });
+
             return this;
+        },
+        toggleKnob : function (e, active) {
+          if (active) {
+            $(".faq-content").removeClass("hide");
+          } else {
+            $(".faq-content").addClass("hide");
+          }
         }
     });
 
