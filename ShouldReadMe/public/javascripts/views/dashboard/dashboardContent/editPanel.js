@@ -10,9 +10,9 @@ SRM.Views = SRM.Views || {};
         el: '.edit-panel',
         events: {
         },
-        
+        icons : [],
         defaults : {
-            icons : ['a','n'],
+            icons : [],
         },
 
         initialize: function (options) {
@@ -29,12 +29,10 @@ SRM.Views = SRM.Views || {};
             
             this.icons = ( this.options && this.options.icons) ? this.options.icons : this.defaults.icons;
             if(this.icons.length){
-                _this.icons.forEach(function (id){
-                    _this.printItem = new SRM.Views.PrintItem({'id' : id });
-                    _this.printItem.render();
+                _this.icons.forEach(function (icon){
+                    _this.$el.find('.preview-container').append(new SRM.Views.PrintItem({id : icon.id}).render().el);
                 });
             }
-            
             
             return this;
         },

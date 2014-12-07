@@ -12,6 +12,8 @@ SRM.Collections = SRM.Collections || {};
         parse: function(response, options)  {
             response.forEach(function (value, index) {
                 value.file_name = "/images/" + value.file_name;
+                value.active = false;
+                value.id = parseInt( value.id );
             });
             return response;
         },

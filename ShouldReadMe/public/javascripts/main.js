@@ -9,9 +9,6 @@ _.extend(window.SRM, {
     Routers: {},
     init: function () {
         'use strict';
-        console.log("DASDASDSA");
-
-        console.log(SRM);
         SRM.srmRouter = new SRM.Routers.SrmRoutes();
 
         Backbone.history.start();
