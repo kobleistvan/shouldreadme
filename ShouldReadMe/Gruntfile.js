@@ -113,7 +113,10 @@ module.exports = function (grunt) {
             'public/dist/css/main.css': [
                 'bower_components/bootstrap/dist/css/bootstrap.min.css',
                 'bower_components/font-awesome/css/font-awesome.min.css',
-                '<%= yeoman.app %>/css/style.css'
+                '<%= yeoman.app %>/css/style.css',
+                '<%= yeoman.app %>/css/toggles-full.css',
+                'public/css/toggles-light.css',
+                'public/css/toggles.css'
             ],
 
             'public/dist/javascripts/vendor.js':
@@ -127,6 +130,7 @@ module.exports = function (grunt) {
                 'bower_components/Backbone.Handlebars/lib/backbone_handlebars.js',
                 'bower_components/jquery-ui/ui/minified/jquery-ui.min.js',
                 'bower_components/backbone.stickit/backbone.stickit.js',
+                'public/javascripts/components/toggles.js'
             ],
 
             'public/dist/javascripts/main.js':

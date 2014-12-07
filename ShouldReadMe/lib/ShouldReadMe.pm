@@ -30,18 +30,12 @@ post '/login' => sub {
     if (params->{email} eq 'bob@bob.bob' && params->{password} eq 'bob') {
         session user => params->{email};
         warn session('requested_path');
-        my $requested = session('requested_path') ? session('requested_path') : '/dashboard';
+        my $requested = session('requested_path') ? session('requested_path') : '/#dashboard';
         session requested_path => undef;
         redirect $requested;
     } else {
         redirect '/#login?failed=1';
     }
-};
-
-get '/dashboard' => sub {
-    warn session('requested_path');
-    warn "\n";
-    template 'base_dashboard';
 };
 
 # Last resort...

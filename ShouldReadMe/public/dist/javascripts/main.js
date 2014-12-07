@@ -70,10 +70,11 @@ SRM.Routers = SRM.Routers || {};
 SRM.Routers.SrmRoutes = Backbone.Router.extend({
 	routes:{
 		'':'home',
-        'editor': 'createFineprint',
+        'editor'     : 'createFineprint',
         'get_started': 'getStarted',
-        'login' : 'login',
-        'register' : 'register',
+        'login'      : 'login',
+        'register'   : 'register',
+        'dashboard'  : 'baseDashboard',
         // '*other': 'defaultRoute'
 	},
 
@@ -90,6 +91,13 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
         SRM.mainView = new SRM.Views.Main({ });
         SRM.mainView.render();
 	}, 
+	
+	baseDashboard: function(){
+        $('#main').html('');
+        console.log("Loading dashboard..");
+        // SRM.mainView = new SRM.Views.Main({ });
+        // SRM.mainView.render();
+	},
 	
 	login : function(){
         $("#logInModal").modal('show');
