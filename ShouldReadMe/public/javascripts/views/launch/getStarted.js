@@ -5,10 +5,7 @@ $("document").ready(function($){
 
     $(".submit-option.active").click(function( ev){
         ev.preventDefault();
-        var $href = $(this).attr("href").substring(1);
-        $(".starting-methods p").toggleClass("hide");
-        $("."+$href).toggleClass("hide");
-        $(".open-options").toggleClass("hide");
+        document.location.href = '/#dashboard'
     });
 
     $(".open-options").click(function(ev){
@@ -17,4 +14,5 @@ $("document").ready(function($){
         $(".starting-methods p").toggleClass("hide");
         $(".details").toggleClass("hide");
     });
+       
 });

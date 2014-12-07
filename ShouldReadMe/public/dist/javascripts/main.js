@@ -21,37 +21,6 @@ $(document).ready(function () {
     'use strict';
     SRM.init();
 });
-/*global SRM, Backbone, JST */
-
-SRM.Views = SRM.Views || {};
-
-(function () {
-    'use strict';
-
-    SRM.Views.Dashboard = Backbone.View.extend({
-        template: JST['public/javascripts/templates/dashboard/baseDashboard.hbs'],
-        el: '#main',
-        events: {     
-            },
-
-        initialize: function (options) {
-            this.options = options;
-        },
-
-        templateData: function() {
-            return {};
-        },
-
-        render: function () {
-            this.renderTemplate(this.templateData());
-
-            return this;
-        }
-
-    });
-
-})();
-
 /*global SRM, Backbone*/
 
 SRM.Models = SRM.Models || {};
@@ -180,7 +149,6 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
 	routes:{
 		'':'home',
         'editor'     : 'createFineprint',
-        'get_started': 'getStarted',
         'login'      : 'login',
         'register'   : 'register',
         'dashboard'  : 'baseDashboard',
@@ -194,12 +162,6 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
         $('#main').html('');
         SRM.getStartedBase = new SRM.Views.GetStarted({ });
         SRM.getStartedBase.render();
-	}, 
-	
-	getStarted: function(){
-        $('#main').html('');
-        SRM.mainView = new SRM.Views.Main({ });
-        SRM.mainView.render();
 	}, 
 	
 	baseDashboard: function(){
@@ -248,10 +210,7 @@ $("document").ready(function($){
 
     $(".submit-option.active").click(function( ev){
         ev.preventDefault();
-        var $href = $(this).attr("href").substring(1);
-        $(".starting-methods p").toggleClass("hide");
-        $("."+$href).toggleClass("hide");
-        $(".open-options").toggleClass("hide");
+        document.location.href = '/#dashboard'
     });
 
     $(".open-options").click(function(ev){
@@ -260,4 +219,5 @@ $("document").ready(function($){
         $(".starting-methods p").toggleClass("hide");
         $(".details").toggleClass("hide");
     });
+       
 });

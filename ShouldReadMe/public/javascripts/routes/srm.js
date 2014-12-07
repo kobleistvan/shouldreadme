@@ -9,7 +9,6 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
 	routes:{
 		'':'home',
         'editor'     : 'createFineprint',
-        'get_started': 'getStarted',
         'login'      : 'login',
         'register'   : 'register',
         'dashboard'  : 'baseDashboard',
@@ -23,12 +22,6 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
         $('#main').html('');
         SRM.getStartedBase = new SRM.Views.GetStarted({ });
         SRM.getStartedBase.render();
-	}, 
-	
-	getStarted: function(){
-        $('#main').html('');
-        SRM.mainView = new SRM.Views.Main({ });
-        SRM.mainView.render();
 	}, 
 	
 	baseDashboard: function(){

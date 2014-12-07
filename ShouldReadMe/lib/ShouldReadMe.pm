@@ -77,7 +77,8 @@ post '/register' => sub {
         redirect '/#register';
     }
     
-    if (resultset('User')->search({-and => [website => params->{website}, email => params->{email}] })) {
+    my $d =resultset('User')->search({-and => [website => params->{website}, email => params->{email}] });
+    if ($d->count()) {
         warn "User already registered";
         redirect '/#login';
     }
@@ -92,7 +93,7 @@ post '/register' => sub {
          }
     );
     
-    redirect '/#get_started';
+    redirect '/get_started';
 
 };
 
