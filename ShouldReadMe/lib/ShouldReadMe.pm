@@ -9,7 +9,7 @@ our $VERSION = '0.1';
 hook before => sub {
     if (! session('user') && request->path_info ne '/') {
         session requested_path => request->path_info;
-        redirect '/';
+        # redirect '/';
     }
 };
 
