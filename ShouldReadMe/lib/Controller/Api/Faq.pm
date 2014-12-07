@@ -10,13 +10,13 @@ prefix '/faq' => sub {
          my @faqs;
          while( my $faq = $faqs->next){
             push @faqs, {
-                            faq_id        => $faq->id(),
-                            question_id   => $faq->title(),
-                            question      => $faq->tip_description(),
-                            answer        => $faq->tooltip(),
-                            icon          => $faq->file_name(),
-                            created_at    => $faq->type(),
-                            updated_at    => $faq->status(),
+                            faq_id        => $faq->faq_id(),
+                            question_id   => $faq->question_id(),
+                            question      => $faq->question(),
+                            answer        => $faq->answer(),
+                            icon          => $faq->icon(),
+                            created_at    => $faq->created_at(),
+                            updated_at    => $faq->updated_at(),
                          }
          }
          return to_json( \@faqs);
