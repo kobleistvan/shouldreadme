@@ -8,4 +8,7 @@ $("document").ready(function($){
             nav.removeClass("navbar-fixed-top");
         }
     });
+    $('#get-st').click(function(){
+        window.location.href = '/get_started';
+    })
 });

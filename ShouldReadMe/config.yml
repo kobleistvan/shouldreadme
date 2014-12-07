@@ -27,3 +27,8 @@ template: "simple"
 #       start_tag: '<%'
 #       end_tag:   '%>'
 
+# Choose a module to handle sessions. I.e. Simple, YAML, MemCache... google it :)
+session: "YAML"
+
+# It's pretty straightforward...
+environment: "development"

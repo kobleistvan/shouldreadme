@@ -2,7 +2,6 @@ package ShouldReadMe::Controller::Api;
 use Dancer2 appname => 'ShouldReadMe';
 use Dancer2::Plugin::Ajax;
 
-
 prefix '/user' => sub {
     get '/' => sub {
         template 'index';
