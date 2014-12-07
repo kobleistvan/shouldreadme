@@ -119,12 +119,12 @@ module.exports = function (grunt) {
             [ 
                 'bower_components/jquery/dist/jquery.js',
                 'bower_components/underscore/underscore.js',
+                'bower_components/jquery-ui/ui/minified/jquery-ui.min.js',
                 'bower_components/backbone/backbone.js',
                 'bower_components/moment/moment.js',
                 'bower_components/bootstrap/dist/js/bootstrap.min.js',
                 'bower_components/handlebars/handlebars.min.js',
                 'bower_components/Backbone.Handlebars/lib/backbone_handlebars.js',
-                'bower_components/jquery-ui/ui/minified/jquery-ui.min.js',
                 'bower_components/backbone.stickit/backbone.stickit.js',
                 'public/javascripts/components/toggles.js'
             ],
@@ -136,6 +136,8 @@ module.exports = function (grunt) {
                 'public/javascripts/models/faq.js',
                 'public/javascripts/collections/SidebarIcons.js',
                 'public/javascripts/collections/FaqCollection.js',
+                'public/javascripts/views/dashboard/dashboardContent/editPanel.js',
+                'public/javascripts/views/dashboard/sidebarRight/tips.js',
                 'public/javascripts/views/dashboard/sidebarLeft/Icons.js',
                 'public/javascripts/views/dashboard/sidebarLeft/Faqs.js',
                 'public/javascripts/views/dashboard/baseDashboard.js',

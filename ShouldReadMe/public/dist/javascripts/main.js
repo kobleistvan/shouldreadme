@@ -34,8 +34,6 @@ SRM.Models = SRM.Models || {};
 
     SRM.Models.Icon = Backbone.Model.extend({
 
-        // url: '/api/icon',
-
         initialize: function() {
         },
 
@@ -139,6 +137,7 @@ SRM.Views = SRM.Views || {};
         el: '.icons-subsection',
         events: {
             'mouseenter .default-icon' : 'getTip',
+            'mouseleave .default-icon' : 'removeTip',
         },
 
         initialize: function (options) {
@@ -158,9 +157,15 @@ SRM.Views = SRM.Views || {};
         },
         
         getTip : function (ev){
-            var id = $(ev.currentTarget).attr('id');
+            var icon = SRM.iconsCollection.get($(ev.currentTarget).attr('id'));
+
+            this.tips = new SRM.Views.SidebarTips({'content' : icon.get('tip_description')});
+            this.tips.render();
             
-           
+        },
+        removeTip : function (ev){
+            this.tips = new SRM.Views.SidebarTips();
+            this.tips.render();
         }
     });
 
@@ -224,9 +229,16 @@ SRM.Views = SRM.Views || {};
             
             SRM.iconsSidebar = new SRM.Views.SidebarIcons();
             SRM.iconsSidebar.render();
+            
+            this.editPanel = new SRM.Views.EditPanel();
+            this.editPanel.render();
+            
+            this.tips = new SRM.Views.SidebarTips();
+            this.tips.render();
 
             SRM.faqsContainer = new SRM.Views.Faqs();
             SRM.faqsContainer.render();
+
             return this;
         }
         
