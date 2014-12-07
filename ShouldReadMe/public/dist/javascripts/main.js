@@ -1,26 +1,3 @@
-/*global SRM, $*/
-
-window.SRM = window.SRM || {};
-
-_.extend(window.SRM, {
-    Models: {},
-    Collections: {},
-    Views: {},
-    Routers: {},
-    init: function () {
-        'use strict';
-        console.log("DASDASDSA");
-
-        console.log(SRM);
-        SRM.srmRouter = new SRM.Routers.SrmRoutes();
-
-        Backbone.history.start();
-    }
-});
-$(document).ready(function () {
-    'use strict';
-    SRM.init();
-});
 /*global SRM, Backbone*/
 
 SRM.Models = SRM.Models || {};
@@ -54,57 +31,29 @@ SRM.Models = SRM.Models || {};
 
 })();
 
-/*global SRM, Backbone*/
+/*global SRM, $*/
 
-SRM.Collections = SRM.Collections || {};
+window.SRM = window.SRM || {};
 
-(function () {
+_.extend(window.SRM, {
+    Models: {},
+    Collections: {},
+    Views: {},
+    Routers: {},
+    init: function () {
+        'use strict';
+        console.log("DASDASDSA");
+
+        console.log(SRM);
+        SRM.srmRouter = new SRM.Routers.SrmRoutes();
+
+        Backbone.history.start();
+    }
+});
+$(document).ready(function () {
     'use strict';
-
-    SRM.Collections.SidebarIcons = Backbone.Collection.extend({
-        model: SRM.Models.Icon,
-        url: '/icon',
-        
-        parse: function(response, options)  {
-            return response.icons;
-        },
-    });
-})();
-/*global SRM, Backbone, JST */
-
-SRM.Views = SRM.Views || {};
-
-(function () {
-    'use strict';
-
-    SRM.Views.SidebarIcons = Backbone.View.extend({
-        template: JST['public/javascripts/templates/dashboard/icons.hbs'],
-        el: '.icons-subsection',
-        events: {
-        },
-
-        initialize: function (options) {
-            this.options = options;
-        },
-
-        templateData: function() {
-            this.iconsCollection = new SRM.Collections.SidebarIcons();
-            this.iconsCollection.fetch({async : 'true'});
-            
-            
-            return {}
-        },
-
-        render: function () {
-            this.renderTemplate(this.templateData());
-
-            return this;
-        }
-        
-    });
-
-})();
-
+    SRM.init();
+});
 /*global SRM, Backbone, JST */
 
 SRM.Views = SRM.Views || {};
