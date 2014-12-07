@@ -1,12 +1,12 @@
 use utf8;
-package Model::Schema::Result::FineprintIcon;
+package Model::Schema::Result::FineprintQuiz;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-Model::Schema::Result::FineprintIcon
+Model::Schema::Result::FineprintQuiz
 
 =cut
 
@@ -15,11 +15,11 @@ use warnings;
 
 use base 'DBIx::Class::Core';
 
-=head1 TABLE: C<fineprint_icon>
+=head1 TABLE: C<fineprint_quiz>
 
 =cut
 
-__PACKAGE__->table("fineprint_icon");
+__PACKAGE__->table("fineprint_quiz");
 
 =head1 ACCESSORS
 
@@ -29,75 +29,36 @@ __PACKAGE__->table("fineprint_icon");
   is_foreign_key: 1
   is_nullable: 0
 
-=head2 icon_id
+=head2 quiz_id
 
   data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
-
-=head2 color
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 8
-
-=head2 used_type
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 32
-
-=head2 user_description
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 100
 
 =cut
 
 __PACKAGE__->add_columns(
   "print_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
-  "icon_id",
+  "quiz_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
-  "color",
-  { data_type => "varchar", is_nullable => 1, size => 8 },
-  "used_type",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
-  "user_description",
-  { data_type => "varchar", is_nullable => 1, size => 100 },
 );
 
 =head1 PRIMARY KEY
 
 =over 4
 
-=item * L</icon_id>
-
 =item * L</print_id>
+
+=item * L</quiz_id>
 
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("icon_id", "print_id");
+__PACKAGE__->set_primary_key("print_id", "quiz_id");
 
 =head1 RELATIONS
-
-=head2 icon
-
-Type: belongs_to
-
-Related object: L<Model::Schema::Result::Icon>
-
-=cut
-
-__PACKAGE__->belongs_to(
-  "icon",
-  "Model::Schema::Result::Icon",
-  { icon_id => "icon_id" },
-  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
-);
 
 =head2 print
 
@@ -114,9 +75,24 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
 );
 
+=head2 quiz
+
+Type: belongs_to
+
+Related object: L<Model::Schema::Result::Quiz>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "quiz",
+  "Model::Schema::Result::Quiz",
+  { quiz_id => "quiz_id" },
+  { is_deferrable => 1, on_delete => "RESTRICT", on_update => "RESTRICT" },
+);
+
 
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2014-12-07 02:48:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yJFuW45eoaVcicpfAvbQcA
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Qzo1XLrRmzb8Ruuo/w7nQA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

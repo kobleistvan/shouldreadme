@@ -1,12 +1,12 @@
 use utf8;
-package Model::Schema::Result::Fineprint;
+package Model::Schema::Result::Quiz;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-Model::Schema::Result::Fineprint
+Model::Schema::Result::Quiz
 
 =cut
 
@@ -15,15 +15,15 @@ use warnings;
 
 use base 'DBIx::Class::Core';
 
-=head1 TABLE: C<fineprint>
+=head1 TABLE: C<quiz>
 
 =cut
 
-__PACKAGE__->table("fineprint");
+__PACKAGE__->table("quiz");
 
 =head1 ACCESSORS
 
-=head2 print_id
+=head2 quiz_id
 
   data_type: 'integer'
   is_auto_increment: 1
@@ -32,8 +32,14 @@ __PACKAGE__->table("fineprint");
 =head2 title
 
   data_type: 'varchar'
+  is_nullable: 1
+  size: 100
+
+=head2 offer
+
+  data_type: 'varchar'
   is_nullable: 0
-  size: 32
+  size: 100
 
 =head2 description
 
@@ -58,10 +64,12 @@ __PACKAGE__->table("fineprint");
 =cut
 
 __PACKAGE__->add_columns(
-  "print_id",
+  "quiz_id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "title",
-  { data_type => "varchar", is_nullable => 0, size => 32 },
+  { data_type => "varchar", is_nullable => 1, size => 100 },
+  "offer",
+  { data_type => "varchar", is_nullable => 0, size => 100 },
   "description",
   { data_type => "varchar", is_nullable => 1, size => 100 },
   "created_at",
@@ -84,45 +92,15 @@ __PACKAGE__->add_columns(
 
 =over 4
 
-=item * L</print_id>
+=item * L</quiz_id>
 
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("print_id");
+__PACKAGE__->set_primary_key("quiz_id");
 
 =head1 RELATIONS
-
-=head2 fineprint_faqs
-
-Type: has_many
-
-Related object: L<Model::Schema::Result::FineprintFaq>
-
-=cut
-
-__PACKAGE__->has_many(
-  "fineprint_faqs",
-  "Model::Schema::Result::FineprintFaq",
-  { "foreign.print_id" => "self.print_id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
-=head2 fineprint_icons
-
-Type: has_many
-
-Related object: L<Model::Schema::Result::FineprintIcon>
-
-=cut
-
-__PACKAGE__->has_many(
-  "fineprint_icons",
-  "Model::Schema::Result::FineprintIcon",
-  { "foreign.print_id" => "self.print_id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
 
 =head2 fineprint_quizzes
 
@@ -135,58 +113,38 @@ Related object: L<Model::Schema::Result::FineprintQuiz>
 __PACKAGE__->has_many(
   "fineprint_quizzes",
   "Model::Schema::Result::FineprintQuiz",
-  { "foreign.print_id" => "self.print_id" },
+  { "foreign.quiz_id" => "self.quiz_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 user_fineprints
+=head2 quiz_questions
 
 Type: has_many
 
-Related object: L<Model::Schema::Result::UserFineprint>
+Related object: L<Model::Schema::Result::QuizQuestion>
 
 =cut
 
 __PACKAGE__->has_many(
-  "user_fineprints",
-  "Model::Schema::Result::UserFineprint",
-  { "foreign.print_id" => "self.print_id" },
+  "quiz_questions",
+  "Model::Schema::Result::QuizQuestion",
+  { "foreign.quiz_id" => "self.quiz_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 faqs
+=head2 prints
 
 Type: many_to_many
 
-Composing rels: L</fineprint_faqs> -> faq
+Composing rels: L</fineprint_quizzes> -> print
 
 =cut
 
-__PACKAGE__->many_to_many("faqs", "fineprint_faqs", "faq");
-
-=head2 quizzes
-
-Type: many_to_many
-
-Composing rels: L</fineprint_quizzes> -> quiz
-
-=cut
-
-__PACKAGE__->many_to_many("quizzes", "fineprint_quizzes", "quiz");
-
-=head2 users
-
-Type: many_to_many
-
-Composing rels: L</user_fineprints> -> user
-
-=cut
-
-__PACKAGE__->many_to_many("users", "user_fineprints", "user");
+__PACKAGE__->many_to_many("prints", "fineprint_quizzes", "print");
 
 
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2014-12-07 02:48:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:KoiZd0RjNuJ1XohMMBQ2Dg
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lvyRa62XkamIh0ziU6SRlQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
