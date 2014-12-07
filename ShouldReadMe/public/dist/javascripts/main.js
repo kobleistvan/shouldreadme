@@ -132,9 +132,9 @@ SRM.Views = SRM.Views || {};
 (function () {
     'use strict';
 
-    SRM.Views.EditPanel = Backbone.View.extend({
-        template: JST['public/javascripts/templates/dashboard/editPanelComponents/editPanel.hbs'],
-        el: '.edit-panel',
+    SRM.Views.PrintItem = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/editPanelComponents/printItem.hbs'],
+        el: '.preview-container',
         events: {
         },
 
@@ -148,6 +148,50 @@ SRM.Views = SRM.Views || {};
 
         render: function () {
             this.renderTemplate(this.templateData());
+            return this;
+        },
+    });
+
+})();
+
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
+    SRM.Views.EditPanel = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/editPanelComponents/editPanel.hbs'],
+        el: '.edit-panel',
+        events: {
+        },
+        
+        defaults : {
+            icons : ['a','n'],
+        },
+
+        initialize: function (options) {
+            this.options = options;
+        },
+
+        templateData: function() {
+            return {}       
+        },
+
+        render: function () {
+            var _this = this;
+            this.renderTemplate(this.templateData());
+            
+            this.icons = ( this.options && this.options.icons) ? this.options.icons : this.defaults.icons;
+            if(this.icons.length){
+                _this.icons.forEach(function (id){
+                    _this.printItem = new SRM.Views.PrintItem({'id' : id });
+                    _this.printItem.render();
+                });
+            }
+            
+            
             return this;
         },
     });
@@ -208,6 +252,7 @@ SRM.Views = SRM.Views || {};
         events: {
             'mouseenter .default-icon' : 'getTip',
             'mouseleave .default-icon' : 'removeTip',
+            'click .default-icon'      : 'renderItem',
         },
 
         initialize: function (options) {
@@ -236,6 +281,10 @@ SRM.Views = SRM.Views || {};
         removeTip : function (ev){
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
+        },
+        renderItem : function(ev){
+            this.previewIcon = new SRM.Views.PrintItem({id : $(ev.currentTarget).attr('id')});
+            this.previewIcon.render();
         }
     });
 

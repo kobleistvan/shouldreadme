@@ -11,6 +11,7 @@ SRM.Views = SRM.Views || {};
         events: {
             'mouseenter .default-icon' : 'getTip',
             'mouseleave .default-icon' : 'removeTip',
+            'click .default-icon'      : 'renderItem',
         },
 
         initialize: function (options) {
@@ -39,6 +40,10 @@ SRM.Views = SRM.Views || {};
         removeTip : function (ev){
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
+        },
+        renderItem : function(ev){
+            this.previewIcon = new SRM.Views.PrintItem({id : $(ev.currentTarget).attr('id')});
+            this.previewIcon.render();
         }
     });
 

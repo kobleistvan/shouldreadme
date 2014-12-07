@@ -136,6 +136,8 @@ module.exports = function (grunt) {
                 'public/javascripts/models/faq.js',
                 'public/javascripts/collections/SidebarIcons.js',
                 'public/javascripts/collections/FaqCollection.js',
+                'public/javascripts/views/dashboard/dashboardContent/colorMenu.js',
+                'public/javascripts/views/dashboard/dashboardContent/printItem.js',
                 'public/javascripts/views/dashboard/dashboardContent/editPanel.js',
                 'public/javascripts/views/dashboard/sidebarRight/tips.js',
                 'public/javascripts/views/dashboard/sidebarLeft/Icons.js',
