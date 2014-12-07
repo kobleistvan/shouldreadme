@@ -113,7 +113,7 @@ module.exports = function (grunt) {
             'public/dist/css/main.css': [
                 'bower_components/bootstrap/dist/css/bootstrap.min.css',
                 'bower_components/font-awesome/css/font-awesome.min.css',
-                '<%= yeoman.app %>/css/launch.css'
+                '<%= yeoman.app %>/css/style.css'
             ],
 
             'public/dist/javascripts/vendor.js':
@@ -136,6 +136,7 @@ module.exports = function (grunt) {
                 'public/javascripts/views/editor/main.js',
                 'public/javascripts/routes/srm.js',
                 'public/javascripts/views/launch/launch.js',
+                'public/javascripts/views/getingstarted/base.js',
                 
                 
             ],
