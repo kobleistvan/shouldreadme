@@ -10,6 +10,7 @@ SRM.Views = SRM.Views || {};
         el: '.icons-subsection',
         events: {
             'mouseenter .default-icon' : 'getTip',
+            'mouseleave .default-icon' : 'removeTip',
         },
 
         initialize: function (options) {
@@ -19,7 +20,6 @@ SRM.Views = SRM.Views || {};
         templateData: function() {
             SRM.iconsCollection = new SRM.Collections.SidebarIcons();
             SRM.iconsCollection.fetch({async: false}); 
-            console.log(SRM.iconsCollection);
 
             return {sidebarIcons : SRM.iconsCollection.toJSON()}       
         },
@@ -30,9 +30,16 @@ SRM.Views = SRM.Views || {};
         },
         
         getTip : function (ev){
-            var id = $(ev.currentTarget).attr('id');
+            var icon = SRM.iconsCollection.get($(ev.currentTarget).attr('id'));
+
+            this.tips = new SRM.Views.SidebarTips({'content' : icon.get('tip_description')});
+            this.tips.render();
             
-            consonle.log(id);
+        },
+        removeTip : function (ev){
+            this.tips = new SRM.Views.SidebarTips();
+            this.tips.render();
+            
         }
     });
 

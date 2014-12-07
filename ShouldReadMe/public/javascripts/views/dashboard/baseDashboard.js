@@ -24,6 +24,13 @@ SRM.Views = SRM.Views || {};
             
             SRM.iconsSidebar = new SRM.Views.SidebarIcons();
             SRM.iconsSidebar.render();
+            
+            this.editPanel = new SRM.Views.EditPanel();
+            this.editPanel.render();
+            
+            this.tips = new SRM.Views.SidebarTips();
+            this.tips.render();
+            
             return this;
         }
         

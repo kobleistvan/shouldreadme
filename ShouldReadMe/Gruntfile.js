@@ -134,6 +134,8 @@ module.exports = function (grunt) {
                 'public/javascripts/main.js',
                 'public/javascripts/models/icon.js',
                 'public/javascripts/collections/SidebarIcons.js',
+                'public/javascripts/views/dashboard/dashboardContent/editPanel.js',
+                'public/javascripts/views/dashboard/sidebarRight/tips.js',
                 'public/javascripts/views/dashboard/sidebarLeft/Icons.js',
                 'public/javascripts/views/dashboard/baseDashboard.js',
                 'public/javascripts/routes/srm.js',

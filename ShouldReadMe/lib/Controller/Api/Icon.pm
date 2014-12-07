@@ -12,7 +12,7 @@ prefix '/icon' => sub {
          my @icons;
          while( my $icon = $icons->next){
             push @icons, {
-                            icon_id => $icon->id(),
+                            id => $icon->id(),
                             title   => $icon->title(),
                             tip_description => $icon->tip_description(),
                             tooltip => $icon->tooltip(),
@@ -29,7 +29,7 @@ prefix '/icon' => sub {
     };
     
     put '/' => sub {
-        return to_json({mata => "user doesn't exist"} );
+        return to_json({mata => "icon doesn't exist"} );
     };
     
     del '/' => sub {

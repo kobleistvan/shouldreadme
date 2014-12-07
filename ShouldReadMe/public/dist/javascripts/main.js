@@ -30,8 +30,6 @@ SRM.Models = SRM.Models || {};
 
     SRM.Models.Icon = Backbone.Model.extend({
 
-        // url: '/api/icon',
-
         initialize: function() {
         },
 
@@ -81,11 +79,53 @@ SRM.Views = SRM.Views || {};
 (function () {
     'use strict';
 
+    SRM.Views.SidebarTips = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/tips.hbs'],
+        el: '.tips-section',
+        events: {
+        },
+        defaults : {
+            content : 'Add icons and create your own fineprint!'
+        },
+
+        initialize: function (options) {
+            this.options = options;
+        },
+
+        templateData: function() {
+            var content;
+            if(this.options && this.options.content){
+                content = this.options.content;
+            }
+            else{
+                content = this.defaults.content;
+            }
+            
+            return {content : content}       
+        },
+
+        render: function () {
+            this.renderTemplate(this.templateData());
+            return this;
+        },
+        
+    });
+
+})();
+
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
     SRM.Views.SidebarIcons = Backbone.View.extend({
         template: JST['public/javascripts/templates/dashboard/icons.hbs'],
         el: '.icons-subsection',
         events: {
             'mouseenter .default-icon' : 'getTip',
+            'mouseleave .default-icon' : 'removeTip',
         },
 
         initialize: function (options) {
@@ -95,7 +135,6 @@ SRM.Views = SRM.Views || {};
         templateData: function() {
             SRM.iconsCollection = new SRM.Collections.SidebarIcons();
             SRM.iconsCollection.fetch({async: false}); 
-            console.log(SRM.iconsCollection);
 
             return {sidebarIcons : SRM.iconsCollection.toJSON()}       
         },
@@ -106,9 +145,16 @@ SRM.Views = SRM.Views || {};
         },
         
         getTip : function (ev){
-            var id = $(ev.currentTarget).attr('id');
+            var icon = SRM.iconsCollection.get($(ev.currentTarget).attr('id'));
+
+            this.tips = new SRM.Views.SidebarTips({'content' : icon.get('tip_description')});
+            this.tips.render();
             
-            consonle.log(id);
+        },
+        removeTip : function (ev){
+            this.tips = new SRM.Views.SidebarTips();
+            this.tips.render();
+            
         }
     });
 
@@ -140,6 +186,13 @@ SRM.Views = SRM.Views || {};
             
             SRM.iconsSidebar = new SRM.Views.SidebarIcons();
             SRM.iconsSidebar.render();
+            
+            this.editPanel = new SRM.Views.EditPanel();
+            this.editPanel.render();
+            
+            this.tips = new SRM.Views.SidebarTips();
+            this.tips.render();
+            
             return this;
         }
         
