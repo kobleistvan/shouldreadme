@@ -8,7 +8,7 @@
             <img class="small-logo" src="/images/ourlogopng.png">
             <ul class="main-menu-list nav navbar-nav">
                 <li><a href="#coming-soon"> Sign in </a></li>
-                <li><a href="#"> Get started </a></li>
+                <li><a id= 'get-st' href="#"> Get started </a></li>
                 <li><a href="#coming-soon"> Coming soon </a></li>
                 <li><a href="#"><img class="help-icon" src="/images/help.png"></a></li>
             </ul>

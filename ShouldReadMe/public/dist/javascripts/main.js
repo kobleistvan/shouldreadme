@@ -72,8 +72,10 @@ SRM.Routers = SRM.Routers || {};
 SRM.Routers.SrmRoutes = Backbone.Router.extend({
 	routes:{
 		'':'launch',
-        'editor': 'getStarted',
-        '*other': 'defaultRoute'
+        'editor'  : 'getStarted',
+        'login'   : 'login',
+        'register': 'register',
+        // '*other': 'defaultRoute'
 	},
 
 	initialize: function(){
@@ -85,6 +87,14 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
         SRM.mainView = new SRM.Views.Main({ });
         SRM.mainView.render();
 	}, 
+	
+	login : function(){ 
+	    $('#logInModal').modal('show');
+	},
+	
+    register : function(){ 
+	    $('#signUpModal').modal('show');
+	},
 	
 	defaultRoute : function(){
 	    document.location.href="/";
@@ -102,5 +112,30 @@ $("document").ready(function($){
         } else {
             nav.removeClass("navbar-fixed-top");
         }
+    });
+    $('#get-st').click(function(){
+        window.location.href = '/get_started';
+    })
+});
+
+$("document").ready(function($){
+    $(".disabled").click(function(event){
+      event.preventDefault();
+    });
+
+    $(".submit-option.active").click(function( ev){
+        ev.preventDefault();
+        var $href = $(this).attr("href").substring(1);
+        $(".starting-methods p").toggleClass("hide");
+        $("."+$href).toggleClass("hide");
+        $(".open-options").toggleClass("hide");
+    });
+
+    $(".open-options").click(function(ev){
+        console.log("miau");
+        ev.preventDefault();
+        $(this).toggleClass("hide");
+        $(".starting-methods p").toggleClass("hide");
+        $(".details").toggleClass("hide");
     });
 });

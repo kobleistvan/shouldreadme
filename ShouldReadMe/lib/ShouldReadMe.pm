@@ -6,12 +6,12 @@ use Controller::Api::User;
 our $VERSION = '0.1';
 
 # Global hook that hooks any request
-hook before => sub {
-    if (! session('user') && request->path_info ne '/') {
-        session requested_path => request->path_info;
-        redirect '/';
-    }
-};
+# hook before => sub {
+#     if (! session('user') && request->path_info ne '/') {
+#         session requested_path => request->path_info;
+#         redirect '/';
+#     }
+# };
 
 get '/' => sub {
     warn session('requested_path');
@@ -19,6 +19,11 @@ get '/' => sub {
     template 'launch';
 };
 
+get '/get_started' => sub {
+    warn session('get_started');
+    warn "\n";
+    template 'get_started';
+};
 # Last resort...
 any qr{.*} => sub {
     template 'launch';

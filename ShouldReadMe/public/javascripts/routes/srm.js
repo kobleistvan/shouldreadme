@@ -8,8 +8,10 @@ SRM.Routers = SRM.Routers || {};
 SRM.Routers.SrmRoutes = Backbone.Router.extend({
 	routes:{
 		'':'launch',
-        'editor': 'getStarted',
-        '*other': 'defaultRoute'
+        'editor'  : 'getStarted',
+        'login'   : 'login',
+        'register': 'register',
+        // '*other': 'defaultRoute'
 	},
 
 	initialize: function(){
@@ -21,6 +23,14 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
         SRM.mainView = new SRM.Views.Main({ });
         SRM.mainView.render();
 	}, 
+	
+	login : function(){ 
+	    $('#logInModal').modal('show');
+	},
+	
+    register : function(){ 
+	    $('#signUpModal').modal('show');
+	},
 	
 	defaultRoute : function(){
 	    document.location.href="/";
