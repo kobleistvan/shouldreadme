@@ -1,12 +1,21 @@
 package ShouldReadMe::Api;
 use Dancer2 appname => 'ShouldReadMe';
 
-
-# use a lexical prefix so we don't override it globally
 prefix '/user' => sub {
     get '/' => sub {
         template 'index';
     };
+    
+    post '/' => sub {
+    };
+    
+    put '/' => sub {
+        return to_json({mata => "user doesn't exist"} );
+    };
+    
+    del '/' => sub {
+    };
+    
 };
 
 1;
