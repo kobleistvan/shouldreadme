@@ -27,8 +27,33 @@ SRM.Models = SRM.Models || {};
 
 (function () {
     'use strict';
-    
+
+    SRM.Models.Icon = Backbone.Model.extend({
+
+        url: '/api/icon',
+
+        initialize: function() {
+        },
+
+        defaults: {
+            title : '',
+            tip_description: '',
+            tooltip: '',
+            file_name: '',
+            type : '',
+            status : 'none'
+        },
+
+        validate: function(attrs, options) {
+        },
+
+        parse: function(response, options)  {
+            return response;
+        }
+    });
+
 })();
+
 /*global SRM, Backbone*/
 
 SRM.Collections = SRM.Collections || {};
@@ -90,23 +115,25 @@ SRM.Views = SRM.Views || {};
     SRM.Views.Dashboard = Backbone.View.extend({
         template: JST['public/javascripts/templates/dashboard/baseDashboard.hbs'],
         el: '#main',
-        events: {     
-            },
+        events: {
+        },
 
         initialize: function (options) {
             this.options = options;
         },
 
         templateData: function() {
-            return {};
+            return {}
         },
 
         render: function () {
             this.renderTemplate(this.templateData());
-
+            
+            SRM.iconsSidebar = new SRM.Views.SidebarIcons();
+            SRM.iconsSidebar.render();
             return this;
         }
-
+        
     });
 
 })();
