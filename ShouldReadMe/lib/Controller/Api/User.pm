@@ -1,5 +1,7 @@
-package ShouldReadMe::Api::User;
+package ShouldReadMe::Controller::Api;
 use Dancer2 appname => 'ShouldReadMe';
+use Dancer2::Plugin::Ajax;
+
 
 prefix '/user' => sub {
     get '/' => sub {
@@ -14,6 +16,11 @@ prefix '/user' => sub {
     };
     
     del '/' => sub {
+    };
+    
+    # I want to test if backbone calls this or get. This may be used for simple jquery-ajax calls.
+    ajax '/:user' => sub {
+         to_json({'status'=>'ajax call successfull call'});
     };
     
 };

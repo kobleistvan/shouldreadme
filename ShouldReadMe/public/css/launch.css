@@ -57,6 +57,23 @@
 	margin:10px 50px;
 }
 
+.carousel-bkg{
+	width:100%;
+	height:500px!important;
+	background-color:red;
+	display:block;
+}
+
+.transparent{
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#logInModal .form-group{
+	padding-left: 50px;
+	padding-right: 50px;	
+}
+
 /*footer style*/
 .main-footer {
 	background-color:black;
