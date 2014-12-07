@@ -40,7 +40,7 @@ plugins:
         dsn: dbi:mysql:shouldreadme
         schema_class: Model::Schema
         user: root
-        pass: tac
+        password: tac
         options:
         RaiseError: 1
         PrintError: 1
