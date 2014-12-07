@@ -85,14 +85,22 @@ module.exports = function (grunt) {
             }
         },
         copy: {
+            main: {
+                dest: 'web/build_index.mhtml',
+                src: '<%= yeoman.app %>/index.html',
+            },
             dist: {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: '<%= yeoman.app %>/../bower_components/bootstrap/dist/',
-                    dest: '<%= yeoman.dist %>/',
+                    cwd: '<%= yeoman.app %>',
+                    dest: '<%= yeoman.dist %>',
                     src: [
-                        'fonts/*.*'
+                        '*.{ico,txt}',
+                        '.htaccess',
+                        'images/{,*/}*.{webp,gif}',
+                        'styles/fonts/{,*/}*.*',
+                        'bower_components/sass-bootstrap/fonts/*.*'
                     ]
                 }]
             },
@@ -105,7 +113,7 @@ module.exports = function (grunt) {
             'public/dist/css/main.css': [
                 'bower_components/bootstrap/dist/css/bootstrap.min.css',
                 'bower_components/font-awesome/css/font-awesome.min.css',
-                'public/css/launch.css',
+                '<%= yeoman.app %>/css/launch.css'
             ],
 
             'public/dist/javascripts/vendor.js':
@@ -169,5 +177,5 @@ module.exports = function (grunt) {
         'handlebars',
         'concat',
     ]);
-    
+
 };
