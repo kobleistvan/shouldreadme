@@ -8,14 +8,16 @@ this["JST"]["public/javascripts/templates/dashboard/baseDashboard.hbs"] = Handle
 
 this["JST"]["public/javascripts/templates/dashboard/icons.hbs"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "    <div class=\"icon-container\">\n        <img src=\"images/\"+"
+  return "    <div class=\"icon-container\">\n        <img src=\""
     + escapeExpression(((helper = (helper = helpers.file_name || (depth0 != null ? depth0.file_name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"file_name","hash":{},"data":data}) : helper)))
-    + " class=\"default-icon\" id=\""
+    + "\" class=\"default-icon\" id=\""
     + escapeExpression(((helper = (helper = helpers.icon_id || (depth0 != null ? depth0.icon_id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"icon_id","hash":{},"data":data}) : helper)))
+    + "\" title=\""
+    + escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"title","hash":{},"data":data}) : helper)))
     + "\">\n    </div>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, buffer = "<h3>Icons</h3>\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.icons : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
+  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.sidebarIcons : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   return buffer;
 },"useData":true});

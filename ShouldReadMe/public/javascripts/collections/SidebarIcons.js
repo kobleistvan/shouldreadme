@@ -10,7 +10,11 @@ SRM.Collections = SRM.Collections || {};
         url: '/icon',
         
         parse: function(response, options)  {
-            return response.icons;
+            response.forEach(function (value, index) {
+                value.file_name = "/images/" + value.file_name;
+            });
+            // console.log(response);
+            return response;
         },
     });
 })();
