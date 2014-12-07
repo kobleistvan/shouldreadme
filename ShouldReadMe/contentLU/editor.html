@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title>ShoulReadMe</title>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+            <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+            <link rel="stylesheet" href="main.css">
+            <script type="text/javascript" src="jquery-2.1.1.js"></script>
+            <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="mainjs.js"></script>
+            <script>
+                $("document").ready(function($){
+                    $(".disabled").click(function(event){
+                      event.preventDefault();
+                    });
+
+                    $(".submit-option.active").click(function(){
+                        var $href = $(this).attr("href").substring(1);
+                        $(".starting-methods p").toggleClass("hide");
+                        $("."+$href).toggleClass("hide");
+                        $(".open-options").toggleClass("hide");
+                    });
+
+                    $(".open-options").click(function(){
+                        $(this).toggleClass("hide");
+                        $(".starting-methods p").toggleClass("hide");
+                        $(".details").toggleClass("hide");
+                    });
+                });
+            </script>
+    </head>
+    <body>
+        <nav class="menu navbar-fixed-top navbar navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <img class="small-logo" src="ourlogopng.png">
+                    <ul class="main-menu-list nav navbar-nav">
+                        <li><a href="#coming-soon"> Sign in </a></li>
+                        <li><a href="#"> Get started </a></li>
+                        <li><a href="#coming-soon"> Coming soon </a></li>
+                        <li><a href="#"><img class="help-icon" src="help.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav> <!-- END  menu section -->
+
+        <div class="container-fluid editor-container">
+            <!-- starting methods -->
+            <div class="starting-methods">
+                <h2 class="text-center">What starting option suits you best?</h2>
+                <div class="row starting-options">
+                    <div class="scratch-option col-md-4">
+                        <a href="#scratch" class="submit-option active"><h3>Start from scratch</h3></a>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                        </p>
+                    </div>
+                    <div class="details-option col-md-4">
+                        <a href="#details" class="submit-option active"><h3>Let us know more about your website</h3></a>
+                        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                        </p>
+                    </div>
+                    <div class="upload-option col-md-4">
+                        <a href="#upload" class="submit-option disabled"><h3>Upload file</h3></a>
+                        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                        </p>
+                    </div>
+                </div>
+                <div class=" text-center">
+                    <span class="open-options hide glyphicon glyphicon-chevron-down" aria-hidden="true"></span>    
+                </div>
+            </div><!--END starting methods -->
+            <!-- details section -->
+            <form class="details hide">
+                <a class="linked" name="#details"></a>
+                <h2>Select the categories that best describe you website</h2>
+                <div class="checkboxes">
+                    <input type="checkbox" value="social"> Social <br/>
+                    <input type="checkbox" value="content-sharing"> Content Sharing <br/>
+                    <input type="checkbox" value="blog"  disabled> Blog <br/>
+                    <input type="checkbox" value="e-commerce"  disabled> E-commerce <br/>
+                    <input type="checkbox" value="presentation"  disabled> Presentation <br/>
+                    <input type="checkbox" value="catalog"  disabled> Online Business Catalog <br/>
+                </div>
+                <p class="not-implemented">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                </p>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info">Get suggestions</button>
+                </div>
+            </form><!-- END details section -->
+
+        </div><!-- END container-->
+    </body>
+</html>
