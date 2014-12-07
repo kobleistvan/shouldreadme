@@ -130,9 +130,14 @@ module.exports = function (grunt) {
             ],
 
             'public/dist/javascripts/main.js':
-            [
+            [   
                 'public/javascripts/models/icon.js',
+                'public/javascripts/main.js',
+                'public/javascripts/views/editor/main.js',
+                'public/javascripts/routes/srm.js',
                 'public/javascripts/views/launch/launch.js',
+                
+                
             ],
         },
         handlebars: {
