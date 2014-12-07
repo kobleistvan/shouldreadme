@@ -9,6 +9,7 @@ SRM.Views = SRM.Views || {};
         template: JST['public/javascripts/templates/dashboard/icons.hbs'],
         el: '.icons-subsection',
         events: {
+            'mouseenter .default-icon' : 'getTip',
         },
 
         initialize: function (options) {
@@ -16,19 +17,23 @@ SRM.Views = SRM.Views || {};
         },
 
         templateData: function() {
-            this.iconsCollection = new SRM.Collections.SidebarIcons();
-            this.iconsCollection.fetch({async : 'true'});
-            
-            
-            return {}
+            SRM.iconsCollection = new SRM.Collections.SidebarIcons();
+            SRM.iconsCollection.fetch({async: false}); 
+            console.log(SRM.iconsCollection);
+
+            return {sidebarIcons : SRM.iconsCollection.toJSON()}       
         },
 
         render: function () {
             this.renderTemplate(this.templateData());
-
             return this;
-        }
+        },
         
+        getTip : function (ev){
+            var id = $(ev.currentTarget).attr('id');
+            
+            consonle.log(id);
+        }
     });
 
 })();

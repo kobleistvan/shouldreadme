@@ -9,11 +9,20 @@ prefix '/icon' => sub {
     get '/' => sub {
          my $icons = resultset('Icon')->search();
         #  warn to_dumper \@icons;
-         
+         my @icons;
          while( my $icon = $icons->next){
-            warn to_dumper $icon->file_name();
+            push @icons, {
+                            icon_id => $icon->id(),
+                            title   => $icon->title(),
+                            tip_description => $icon->tip_description(),
+                            tooltip => $icon->tooltip(),
+                            file_name=>$icon->file_name(),
+                            type    => $icon->type(),
+                            status  => $icon->status(),
+                         }
          }
-        template 'index';
+         return to_json( \@icons);
+        
     };
     
     post '/' => sub {
