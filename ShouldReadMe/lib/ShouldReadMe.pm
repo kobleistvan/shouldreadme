@@ -9,4 +9,9 @@ get '/' => sub {
     template 'launch';
 };
 
+# Last resort...
+any qr{.*} => sub {
+    template 'launch';
+};
+    
 true;
