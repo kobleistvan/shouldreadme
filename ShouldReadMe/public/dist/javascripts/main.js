@@ -9,9 +9,6 @@ _.extend(window.SRM, {
     Routers: {},
     init: function () {
         'use strict';
-        console.log("DASDASDSA");
-
-        console.log(SRM);
         SRM.srmRouter = new SRM.Routers.SrmRoutes();
 
         Backbone.history.start();
@@ -70,6 +67,8 @@ SRM.Collections = SRM.Collections || {};
         parse: function(response, options)  {
             response.forEach(function (value, index) {
                 value.file_name = "/images/" + value.file_name;
+                value.active = false;
+                value.id = parseInt( value.id );
             });
             return response;
         },
@@ -84,7 +83,7 @@ SRM.Views = SRM.Views || {};
 
     SRM.Views.PrintItem = Backbone.View.extend({
         template: JST['public/javascripts/templates/dashboard/editPanelComponents/printItem.hbs'],
-        el: '.preview-container',
+        // el: '.preview-container',
         events: {
         },
 
@@ -93,7 +92,12 @@ SRM.Views = SRM.Views || {};
         },
 
         templateData: function() {
-            return {}       
+            var selectedIcon = SRM.iconsCollection.get(this.options.id);
+
+            return {
+                icon_id : selectedIcon.get('id'),
+                file_name : selectedIcon.get('file_name')
+            }       
         },
 
         render: function () {
@@ -116,9 +120,9 @@ SRM.Views = SRM.Views || {};
         el: '.edit-panel',
         events: {
         },
-        
+        icons : [],
         defaults : {
-            icons : ['a','n'],
+            icons : [],
         },
 
         initialize: function (options) {
@@ -135,12 +139,10 @@ SRM.Views = SRM.Views || {};
             
             this.icons = ( this.options && this.options.icons) ? this.options.icons : this.defaults.icons;
             if(this.icons.length){
-                _this.icons.forEach(function (id){
-                    _this.printItem = new SRM.Views.PrintItem({'id' : id });
-                    _this.printItem.render();
+                _this.icons.forEach(function (icon){
+                    _this.$el.find('.preview-container').append(new SRM.Views.PrintItem({id : icon.id}).render().el);
                 });
             }
-            
             
             return this;
         },
@@ -317,8 +319,26 @@ SRM.Views = SRM.Views || {};
             this.tips.render();
         },
         renderItem : function(ev){
-            this.previewIcon = new SRM.Views.PrintItem({id : $(ev.currentTarget).attr('id')});
-            this.previewIcon.render();
+            var selectedIcon = SRM.iconsCollection.get($(ev.currentTarget).attr('id'));
+            $(".icon-container").click(function(){
+                $(this).toggleClass("active");
+            });
+            
+            if(selectedIcon.get('active')){
+                SRM.iconsCollection.get($(ev.currentTarget).attr('id')).set('active', false);
+                var $element = $('#'+selectedIcon.get('id')+'.preview-item');
+                $element.addClass('hide');
+                
+                var index = this.options.parent.editPanel.icons.indexOf(selectedIcon.get('id'));
+                this.options.parent.editPanel.icons.splice(index, 1);
+            }
+            else{
+                SRM.iconsCollection.get($(ev.currentTarget).attr('id')).set('active', true);
+                this.previewIcon = new SRM.Views.PrintItem({id : $(ev.currentTarget).attr('id')});
+                this.options.parent.editPanel.icons.push(this.previewIcon);
+                this.options.parent.editPanel.render();    
+            }
+            
         }
     });
 
@@ -452,7 +472,7 @@ SRM.Views = SRM.Views || {};
         render: function () {
             this.renderTemplate(this.templateData());
             
-            SRM.iconsSidebar = new SRM.Views.SidebarIcons();
+            SRM.iconsSidebar = new SRM.Views.SidebarIcons({parent : this});
             SRM.iconsSidebar.render();
             
             this.editPanel = new SRM.Views.EditPanel();

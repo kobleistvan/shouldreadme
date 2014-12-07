@@ -7,7 +7,7 @@ SRM.Views = SRM.Views || {};
 
     SRM.Views.PrintItem = Backbone.View.extend({
         template: JST['public/javascripts/templates/dashboard/editPanelComponents/printItem.hbs'],
-        el: '.preview-container',
+        // el: '.preview-container',
         events: {
         },
 
@@ -16,7 +16,12 @@ SRM.Views = SRM.Views || {};
         },
 
         templateData: function() {
-            return {}       
+            var selectedIcon = SRM.iconsCollection.get(this.options.id);
+
+            return {
+                icon_id : selectedIcon.get('id'),
+                file_name : selectedIcon.get('file_name')
+            }       
         },
 
         render: function () {

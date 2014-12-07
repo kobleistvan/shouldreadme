@@ -22,7 +22,7 @@ SRM.Views = SRM.Views || {};
         render: function () {
             this.renderTemplate(this.templateData());
             
-            SRM.iconsSidebar = new SRM.Views.SidebarIcons();
+            SRM.iconsSidebar = new SRM.Views.SidebarIcons({parent : this});
             SRM.iconsSidebar.render();
             
             this.editPanel = new SRM.Views.EditPanel();

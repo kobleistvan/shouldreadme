@@ -42,8 +42,26 @@ SRM.Views = SRM.Views || {};
             this.tips.render();
         },
         renderItem : function(ev){
-            this.previewIcon = new SRM.Views.PrintItem({id : $(ev.currentTarget).attr('id')});
-            this.previewIcon.render();
+            var selectedIcon = SRM.iconsCollection.get($(ev.currentTarget).attr('id'));
+            $(".icon-container").click(function(){
+                $(this).toggleClass("active");
+            });
+            
+            if(selectedIcon.get('active')){
+                SRM.iconsCollection.get($(ev.currentTarget).attr('id')).set('active', false);
+                var $element = $('#'+selectedIcon.get('id')+'.preview-item');
+                $element.addClass('hide');
+                
+                var index = this.options.parent.editPanel.icons.indexOf(selectedIcon.get('id'));
+                this.options.parent.editPanel.icons.splice(index, 1);
+            }
+            else{
+                SRM.iconsCollection.get($(ev.currentTarget).attr('id')).set('active', true);
+                this.previewIcon = new SRM.Views.PrintItem({id : $(ev.currentTarget).attr('id')});
+                this.options.parent.editPanel.icons.push(this.previewIcon);
+                this.options.parent.editPanel.render();    
+            }
+            
         }
     });
 

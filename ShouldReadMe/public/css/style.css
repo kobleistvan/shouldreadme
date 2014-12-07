@@ -230,6 +230,9 @@ h3{
 	padding: 0 15px;
 }
 
+.preview-container div {
+    float:left;
+}
 .preview-section,
 .icons-subsection,
 .faq-section,
