@@ -20,6 +20,10 @@ _.extend(window.SRM, {
 $(document).ready(function () {
     'use strict';
     SRM.init();
+    
+    if (document.location.pathname != '/') {
+        console.log('not landing page');
+    }
 });
 /*global SRM, Backbone*/
 
@@ -67,7 +71,6 @@ SRM.Collections = SRM.Collections || {};
             response.forEach(function (value, index) {
                 value.file_name = "/images/" + value.file_name;
             });
-            // console.log(response);
             return response;
         },
     });
@@ -154,7 +157,6 @@ SRM.Views = SRM.Views || {};
         removeTip : function (ev){
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
-            
         }
     });
 
@@ -192,7 +194,10 @@ SRM.Views = SRM.Views || {};
             
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
-            
+
+            // SRM.faqsContainer = new SRM.Views.Faqs();
+            // SRM.faqsContainer.render();
+
             return this;
         }
         
@@ -216,6 +221,7 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
         'dashboard'  : 'baseDashboard',
         // '*other': 'defaultRoute'
 	},
+
 
 	initialize: function(){
 	},

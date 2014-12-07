@@ -29,6 +29,12 @@ this["JST"]["public/javascripts/templates/dashboard/editPanelComponents/printIte
 
 
 
+this["JST"]["public/javascripts/templates/dashboard/faqs.hbs"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  return "<h3>Frequently Asked Questions</h3>\n\n    <div class=\"faq-container\">\n        test???\n    </div>\n";
+  },"useData":true});
+
+
+
 this["JST"]["public/javascripts/templates/dashboard/icons.hbs"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "    <div class=\"icon-container\">\n        <img src=\""

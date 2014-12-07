@@ -20,4 +20,8 @@ _.extend(window.SRM, {
 $(document).ready(function () {
     'use strict';
     SRM.init();
+    
+    if (document.location.pathname != '/') {
+        console.log('not landing page');
+    }
 });

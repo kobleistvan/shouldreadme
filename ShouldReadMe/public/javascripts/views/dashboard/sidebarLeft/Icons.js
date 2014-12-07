@@ -39,7 +39,6 @@ SRM.Views = SRM.Views || {};
         removeTip : function (ev){
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
-            
         }
     });
 

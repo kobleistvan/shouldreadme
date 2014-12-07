@@ -30,7 +30,10 @@ SRM.Views = SRM.Views || {};
             
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
-            
+
+            // SRM.faqsContainer = new SRM.Views.Faqs();
+            // SRM.faqsContainer.render();
+
             return this;
         }
         

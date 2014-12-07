@@ -15,6 +15,7 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
         // '*other': 'defaultRoute'
 	},
 
+
 	initialize: function(){
 	},
 	
