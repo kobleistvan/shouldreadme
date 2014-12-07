@@ -13,7 +13,6 @@ SRM.Collections = SRM.Collections || {};
             response.forEach(function (value, index) {
                 value.file_name = "/images/" + value.file_name;
             });
-            // console.log(response);
             return response;
         },
     });

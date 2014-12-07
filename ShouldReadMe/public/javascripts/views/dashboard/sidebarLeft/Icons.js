@@ -32,7 +32,7 @@ SRM.Views = SRM.Views || {};
         getTip : function (ev){
             var id = $(ev.currentTarget).attr('id');
             
-            consonle.log(id);
+           
         }
     });
 

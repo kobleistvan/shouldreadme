@@ -1,8 +1,6 @@
 package ShouldReadMe::Controller::Api;
 use Dancer2 appname => 'ShouldReadMe';
-use Dancer2::Plugin::Ajax;
 
-use Digest::SHA1 qw(sha1_hex);
 use Dancer2::Plugin::DBIC qw(schema resultset rset);
 
 prefix '/icon' => sub {
@@ -33,11 +31,6 @@ prefix '/icon' => sub {
     };
     
     del '/' => sub {
-    };
-    
-    # I want to test if backbone calls this or get. This may be used for simple jquery-ajax calls.
-    ajax '/:user' => sub {
-         to_json({'status'=>'ajax call successfull call'});
     };
     
 };
