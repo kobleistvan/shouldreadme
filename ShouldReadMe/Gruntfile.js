@@ -133,7 +133,7 @@ module.exports = function (grunt) {
             [   
                 'public/javascripts/models/icon.js',
                 'public/javascripts/main.js',
-                'public/javascripts/views/editor/main.js',
+                'public/javascripts/views/dashboard/baseDashboard.js',
                 'public/javascripts/routes/srm.js',
                 'public/javascripts/views/launch/launch.js',
                 'public/javascripts/views/launch/getStarted.js',

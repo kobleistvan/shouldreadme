@@ -29,18 +29,18 @@ $(document).ready(function () {
     'use strict';
     SRM.init();
 });
-/*global SRM, Backbone, JST*/
+/*global SRM, Backbone, JST */
 
 SRM.Views = SRM.Views || {};
 
 (function () {
     'use strict';
 
-    SRM.Views.Main = Backbone.View.extend({
-        template: JST['public/javascripts/templates/editor/main.hbs'],
+    SRM.Views.Dashboard = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/baseDashboard.hbs'],
         el: '#main',
-        events: {
-        },
+        events: {     
+            },
 
         initialize: function (options) {
             this.options = options;
@@ -79,13 +79,14 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
 	},
 
 	initialize: function(){
-        console.log("adeiejw");
 	},
+	
 	createFineprint: function(){
         $('#main').html('');
         SRM.getStartedBase = new SRM.Views.GetStarted({ });
         SRM.getStartedBase.render();
 	}, 
+	
 	getStarted: function(){
         $('#main').html('');
         SRM.mainView = new SRM.Views.Main({ });
@@ -95,8 +96,11 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
 	baseDashboard: function(){
         $('#main').html('');
         console.log("Loading dashboard..");
-        // SRM.mainView = new SRM.Views.Main({ });
-        // SRM.mainView.render();
+       
+       SRM.baseDashboard = new SRM.Views.Dashboard();
+    //   console.log(SRM.baseDashboard);
+       
+       SRM.baseDashboard.render();
 	},
 	
 	login : function(){

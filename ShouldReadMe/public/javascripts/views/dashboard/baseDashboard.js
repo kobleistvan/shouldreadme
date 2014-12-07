@@ -1,15 +1,15 @@
-/*global SRM, Backbone, JST*/
+/*global SRM, Backbone, JST */
 
 SRM.Views = SRM.Views || {};
 
 (function () {
     'use strict';
 
-    SRM.Views.Main = Backbone.View.extend({
-        template: JST['public/javascripts/templates/editor/main.hbs'],
+    SRM.Views.Dashboard = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/baseDashboard.hbs'],
         el: '#main',
-        events: {
-        },
+        events: {     
+            },
 
         initialize: function (options) {
             this.options = options;
