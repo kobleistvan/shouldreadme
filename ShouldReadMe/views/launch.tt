@@ -60,7 +60,7 @@
             <h4 class="modal-title">Sign up</h4>
           </div>
           <div class="modal-body">
-            <form role="form">
+            <form role="form" action="/register" method="POST">
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
