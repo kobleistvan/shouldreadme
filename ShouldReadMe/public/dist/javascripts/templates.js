@@ -6,6 +6,17 @@ this["JST"]["public/javascripts/templates/dashboard/baseDashboard.hbs"] = Handle
 
 
 
+this["JST"]["public/javascripts/templates/dashboard/faqs.hbs"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+  return "    <div class=\"faq-container\">\n        test???\n    </div>\n";
+  },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, buffer = "<h3>Frequently Asked Questions</h3>\n";
+  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0.faqs : depth0), {"name":"each","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
+  if (stack1 != null) { buffer += stack1; }
+  return buffer;
+},"useData":true});
+
+
+
 this["JST"]["public/javascripts/templates/dashboard/icons.hbs"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "    <div class=\"icon-container\">\n        <img src=\""
