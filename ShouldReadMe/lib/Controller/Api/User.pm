@@ -1,4 +1,4 @@
-package ShouldReadMe::Api::User;
+package ShouldReadMe::Controller::Api;
 use Dancer2 appname => 'ShouldReadMe';
 
 prefix '/user' => sub {
