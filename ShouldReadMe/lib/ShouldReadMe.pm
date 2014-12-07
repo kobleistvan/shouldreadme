@@ -7,7 +7,7 @@ our $VERSION = '0.1';
 
 # Global hook that hooks any request
 hook before => sub {
-    if (! session('user') && (request->path_info ne '/' && request->path_info ne '/#login' && request->path_info ne '/#register')) {
+    if (! session('user') && request->path_info ne '/' && request->path_info ne '/#login' && request->path_info ne '/login' && request->path_info ne '/#register') {
         warn request->path_info;
         session requested_path => request->path_info;
         redirect '/#login';
@@ -20,21 +20,21 @@ get '/' => sub {
     template 'launch';
 };
 
-# Last resort...
-any qr{.*} => sub {
-    template 'launch';
-};
-
-
 post '/login' => sub {
     # Validate the username and password they supplied
-    if (params->{user} eq 'bob' && params->{pass} eq 'bob') {
-        session user => params->{user};
-        redirect session('requested_path');
+    if (params->{email} eq 'bob@bob.bob' && params->{password} eq 'bob') {
+        session user => params->{email};
+        my $requested = session('requested_path');
+        session requested_path => undef;
+        redirect $requested;
     } else {
         redirect '/#login?failed=1';
     }
 };
 
+# Last resort...
+any qr{.*} => sub {
+    template 'launch';
+};
 
 true;
