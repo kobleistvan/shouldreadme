@@ -53,6 +53,10 @@ _.extend(window.SRM, {
 $(document).ready(function () {
     'use strict';
     SRM.init();
+    
+    if (document.location.pathname != '/') {
+        console.log('not landing page');
+    }
 });
 /*global SRM, Backbone, JST */
 
@@ -103,6 +107,7 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
         'dashboard'  : 'baseDashboard',
         // '*other': 'defaultRoute'
 	},
+
 
 	initialize: function(){
 	},
