@@ -10,9 +10,6 @@ SRM.Collections = SRM.Collections || {};
         url: '/faq',
         
         parse: function(response, options)  {
-            response.forEach(function (value, index) {
-                // value.file_name = "/images/" + value.file_name;
-            });
             return response;
         },
     });

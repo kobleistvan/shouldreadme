@@ -1,3 +1,30 @@
+/*global SRM, $*/
+
+window.SRM = window.SRM || {};
+
+_.extend(window.SRM, {
+    Models: {},
+    Collections: {},
+    Views: {},
+    Routers: {},
+    init: function () {
+        'use strict';
+        console.log("DASDASDSA");
+
+        console.log(SRM);
+        SRM.srmRouter = new SRM.Routers.SrmRoutes();
+
+        Backbone.history.start();
+    }
+});
+$(document).ready(function () {
+    'use strict';
+    SRM.init();
+    
+    if (document.location.pathname != '/') {
+        console.log('not landing page');
+    }
+});
 /*global SRM, Backbone*/
 
 SRM.Models = SRM.Models || {};
@@ -31,33 +58,148 @@ SRM.Models = SRM.Models || {};
 
 })();
 
-/*global SRM, $*/
+/*global SRM, Backbone*/
 
-window.SRM = window.SRM || {};
+SRM.Models = SRM.Models || {};
 
-_.extend(window.SRM, {
-    Models: {},
-    Collections: {},
-    Views: {},
-    Routers: {},
-    init: function () {
-        'use strict';
-        console.log("DASDASDSA");
-
-        console.log(SRM);
-        SRM.srmRouter = new SRM.Routers.SrmRoutes();
-
-        Backbone.history.start();
-    }
-});
-$(document).ready(function () {
+(function () {
     'use strict';
-    SRM.init();
-    
-    if (document.location.pathname != '/') {
-        console.log('not landing page');
-    }
-});
+
+    SRM.Models.Faq = Backbone.Model.extend({
+
+        // url: '/api/faq',
+
+        initialize: function() {
+        },
+
+        defaults: {
+            faq_id : '',
+            question_id: '',
+            question: '',
+            answer: '',
+            icon : '',
+            created_at : '',
+            updated_at : ''
+        },
+
+        validate: function(attrs, options) {
+        },
+
+        parse: function(response, options)  {
+            return response;
+        }
+    });
+
+})();
+
+/*global SRM, Backbone*/
+
+SRM.Collections = SRM.Collections || {};
+
+(function () {
+    'use strict';
+
+    SRM.Collections.SidebarIcons = Backbone.Collection.extend({
+        model: SRM.Models.Icon,
+        url: '/icon',
+        
+        parse: function(response, options)  {
+            response.forEach(function (value, index) {
+                value.file_name = "/images/" + value.file_name;
+            });
+            return response;
+        },
+    });
+})();
+/*global SRM, Backbone*/
+
+SRM.Collections = SRM.Collections || {};
+
+(function () {
+    'use strict';
+
+    SRM.Collections.FaqCollection = Backbone.Collection.extend({
+        model: SRM.Models.Faq,
+        url: '/faq',
+        
+        parse: function(response, options)  {
+            return response;
+        },
+    });
+})();
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
+    SRM.Views.SidebarIcons = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/icons.hbs'],
+        el: '.icons-subsection',
+        events: {
+            'mouseenter .default-icon' : 'getTip',
+        },
+
+        initialize: function (options) {
+            this.options = options;
+        },
+
+        templateData: function() {
+            SRM.iconsCollection = new SRM.Collections.SidebarIcons();
+            SRM.iconsCollection.fetch({async: false}); 
+            console.log(SRM.iconsCollection);
+
+            return {sidebarIcons : SRM.iconsCollection.toJSON()}       
+        },
+
+        render: function () {
+            this.renderTemplate(this.templateData());
+            return this;
+        },
+        
+        getTip : function (ev){
+            var id = $(ev.currentTarget).attr('id');
+            
+           
+        }
+    });
+
+})();
+
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
+    SRM.Views.Faqs = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/faq.hbs'],
+        el: '.faq-section',
+        events: {
+        },
+
+        initialize: function (options) {
+            this.options = options;
+        },
+
+        templateData: function() {
+            SRM.faqCollection = new SRM.Collections.FaqCollection();
+            SRM.faqCollection.fetch({async: false}); 
+            console.log('srm.faqcolelction:',SRM.faqCollection);
+
+            return {faqs : SRM.faqCollection.toJSON()}       
+        },
+
+        render: function () {
+            this.renderTemplate(this.templateData());
+            return this;
+        }
+    });
+
+})();
+
 /*global SRM, Backbone, JST */
 
 SRM.Views = SRM.Views || {};
@@ -84,6 +226,9 @@ SRM.Views = SRM.Views || {};
             
             SRM.iconsSidebar = new SRM.Views.SidebarIcons();
             SRM.iconsSidebar.render();
+
+            SRM.faqsContainer = new SRM.Views.Faqs();
+            SRM.faqsContainer.render();
             return this;
         }
         

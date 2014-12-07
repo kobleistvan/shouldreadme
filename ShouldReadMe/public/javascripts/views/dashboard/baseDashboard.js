@@ -24,6 +24,9 @@ SRM.Views = SRM.Views || {};
             
             SRM.iconsSidebar = new SRM.Views.SidebarIcons();
             SRM.iconsSidebar.render();
+
+            SRM.faqsContainer = new SRM.Views.Faqs();
+            SRM.faqsContainer.render();
             return this;
         }
         

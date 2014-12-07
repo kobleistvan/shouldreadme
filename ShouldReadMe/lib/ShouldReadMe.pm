@@ -3,6 +3,7 @@ use Dancer2;
 
 use Controller::Api::User;
 use Controller::Api::Icon;
+use Controller::Api::Faq;
 
 use Digest::SHA1 qw(sha1_hex);
 use Dancer2::Plugin::DBIC qw(schema resultset rset);

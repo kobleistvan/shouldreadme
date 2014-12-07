@@ -18,7 +18,7 @@ SRM.Views = SRM.Views || {};
         templateData: function() {
             SRM.faqCollection = new SRM.Collections.FaqCollection();
             SRM.faqCollection.fetch({async: false}); 
-            console.log(SRM.faqCollection);
+            console.log('srm.faqcolelction:',SRM.faqCollection);
 
             return {faqs : SRM.faqCollection.toJSON()}       
         },
