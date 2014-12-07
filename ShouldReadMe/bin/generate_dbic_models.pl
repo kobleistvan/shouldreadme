@@ -10,7 +10,7 @@ use DBIx::Class::Schema::Loader qw/ make_schema_at rescan /;
 make_schema_at(
 	'Model::Schema',
 	{ 	debug => 1,
-		dump_directory => '../lib/Model/',
+		dump_directory => '../lib/',
 		overwrite_modifications => 1,
 	},
 	[ 

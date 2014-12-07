@@ -54,7 +54,7 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/javascripts/templates/**/*.{ejs,mustache,hbs}'
                 ],
-                tasks: ['handlebars', 'concat']
+                tasks: ['handlebars', 'copy:dist','concat']
             }
         },
         connect: {
@@ -84,7 +84,31 @@ module.exports = function (grunt) {
                 }
             }
         },
-
+        copy: {
+            main: {
+                dest: 'web/build_index.mhtml',
+                src: '<%= yeoman.app %>/index.html',
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>',
+                    dest: '<%= yeoman.dist %>',
+                    src: [
+                        '*.{ico,txt}',
+                        '.htaccess',
+                        'images/{,*/}*.{webp,gif}',
+                        'styles/fonts/{,*/}*.*',
+                        'bower_components/sass-bootstrap/fonts/*.*'
+                    ]
+                }]
+            },
+            build: {
+                  dest: 'web/build_index.mhtml',
+                  src: '<%= yeoman.dist %>/index.html'
+            }
+        },
         concat: {
             'public/dist/css/main.css': [
                 'bower_components/bootstrap/dist/css/bootstrap.min.css',
@@ -98,6 +122,7 @@ module.exports = function (grunt) {
                 'bower_components/underscore/underscore.js',
                 'bower_components/backbone/backbone.js',
                 'bower_components/moment/moment.js',
+                'bower_components/bootstrap/dist/js/bootstrap.min.js',
                 'bower_components/handlebars/handlebars.min.js',
                 'bower_components/Backbone.Handlebars/lib/backbone_handlebars.js',
                 'bower_components/jquery-ui/ui/minified/jquery-ui.min.js',
