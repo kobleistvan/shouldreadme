@@ -6,7 +6,7 @@ SRM.Views = SRM.Views || {};
     'use strict';
 
     SRM.Views.Faqs = Backbone.View.extend({
-        template: JST['public/javascripts/templates/dashboard/faq.hbs'],
+        template: JST['public/javascripts/templates/dashboard/faqs.hbs'],
         el: '.faq-section',
         events: {
         },
@@ -18,12 +18,11 @@ SRM.Views = SRM.Views || {};
         templateData: function() {
             SRM.faqCollection = new SRM.Collections.FaqCollection();
             SRM.faqCollection.fetch({async: false}); 
-            console.log('srm.faqcolelction:',SRM.faqCollection);
 
             return {faqs : SRM.faqCollection.toJSON()}       
         },
 
-        render: function () {
+        render: function() {
             this.renderTemplate(this.templateData());
             return this;
         }

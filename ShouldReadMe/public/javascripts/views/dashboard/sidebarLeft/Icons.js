@@ -19,7 +19,6 @@ SRM.Views = SRM.Views || {};
         templateData: function() {
             SRM.iconsCollection = new SRM.Collections.SidebarIcons();
             SRM.iconsCollection.fetch({async: false}); 
-            console.log(SRM.iconsCollection);
 
             return {sidebarIcons : SRM.iconsCollection.toJSON()}       
         },
