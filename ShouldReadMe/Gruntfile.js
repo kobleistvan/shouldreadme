@@ -49,7 +49,7 @@ module.exports = function (grunt) {
             all: {
                 files: [
                     '<%= yeoman.app %>/*.html',
-                    '{.tmp,<%= yeoman.app %>}/css/*.css',
+                    '{<%= yeoman.app %>}/css/*.css',
                     '{.tmp,<%= yeoman.app %>}/javascripts/**/*.js',
                     '<%= yeoman.app %>/images/*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/javascripts/templates/**/*.{ejs,mustache,hbs}'
@@ -87,7 +87,9 @@ module.exports = function (grunt) {
 
         concat: {
             'public/dist/css/main.css': [
-                'public/css/main.css'
+                'bower_components/bootstrap/dist/css/bootstrap.min.css',
+                'bower_components/font-awesome/css/font-awesome.min.css',
+                'public/css/launch.css',
             ],
 
             'public/dist/javascripts/vendor.js':

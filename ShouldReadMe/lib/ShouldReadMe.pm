@@ -6,7 +6,7 @@ use Api::User;
 our $VERSION = '0.1';
 
 get '/' => sub {
-    template 'index';
+    template 'launch';
 };
 
 true;
