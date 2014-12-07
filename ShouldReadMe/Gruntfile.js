@@ -137,7 +137,6 @@ module.exports = function (grunt) {
                 'public/javascripts/routes/srm.js',
                 'public/javascripts/views/launch/launch.js',
                 'public/javascripts/views/launch/getStarted.js',
-                
             ],
         },
         handlebars: {

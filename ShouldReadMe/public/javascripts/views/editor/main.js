@@ -12,13 +12,11 @@ SRM.Views = SRM.Views || {};
         },
 
         initialize: function (options) {
-            console.log("SDasdada");
             this.options = options;
         },
 
         templateData: function() {
-            return {
-            };
+            return {};
         },
 
         render: function () {

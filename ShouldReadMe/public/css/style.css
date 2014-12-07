@@ -43,8 +43,8 @@
 	height:auto;
 	overflow:hidden;
 	padding-top:50px;
-	background: url("/images/dark_texture.png") repeat 0% 0% #1c1c1c;
-	color : lightgray;
+	background: url("/image/dark_texture.png") repeat 0% 0% #1c1c1c;
+	color: lightgray;
 }
 
 .cover{
