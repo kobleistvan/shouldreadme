@@ -1,11 +1,3 @@
-/*global SRM, Backbone*/
-
-SRM.Models = SRM.Models || {};
-
-(function () {
-    'use strict';
-    
-})();
 /*global SRM, $*/
 
 window.SRM = window.SRM || {};
@@ -29,6 +21,65 @@ $(document).ready(function () {
     'use strict';
     SRM.init();
 });
+/*global SRM, Backbone*/
+
+SRM.Models = SRM.Models || {};
+
+(function () {
+    'use strict';
+    
+})();
+/*global SRM, Backbone*/
+
+SRM.Collections = SRM.Collections || {};
+
+(function () {
+    'use strict';
+
+    SRM.Collections.SidebarIcons = Backbone.Collection.extend({
+        model: SRM.Models.Icon,
+        url: '/api/icon',
+        
+        parse: function(response, options)  {
+            return response.icons;
+        },
+    });
+})();
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
+    SRM.Views.SidebarIcons = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/icons.hbs'],
+        el: '.icons-subsection',
+        events: {
+        },
+
+        initialize: function (options) {
+            this.options = options;
+        },
+
+        templateData: function() {
+            this.iconsCollection = new SRM.Collections.SidebarIcons();
+            this.iconsCollection.fetch({async : 'true'});
+            
+            
+            return {}
+        },
+
+        render: function () {
+            this.renderTemplate(this.templateData());
+
+            return this;
+        }
+        
+    });
+
+})();
+
 /*global SRM, Backbone, JST */
 
 SRM.Views = SRM.Views || {};
