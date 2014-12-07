@@ -19,26 +19,26 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
         console.log("adeiejw");
 	},
 	createFineprint: function(){
-	    $('#main').html('');
+        $('#main').html('');
         SRM.getStartedBase = new SRM.Views.GetStarted({ });
         SRM.getStartedBase.render();
 	}, 
 	getStarted: function(){
-	    $('#main').html('');
+        $('#main').html('');
         SRM.mainView = new SRM.Views.Main({ });
         SRM.mainView.render();
 	}, 
 	
 	login : function(){
-	    $("#logInModal").modal('show');
+        $("#logInModal").modal('show');
 	},
 	
 	register : function(){
-	    $("#signUpModal").modal('show');
+        $("#signUpModal").modal('show');
 	},
 	
 	defaultRoute : function(){
-	    document.location.href="/";
+        document.location.href="/";
 	}
 
 });
