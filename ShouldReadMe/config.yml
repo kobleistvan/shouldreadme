@@ -29,7 +29,10 @@ template: "simple"
 
 # Choose a module to handle sessions. I.e. Simple, YAML, MemCache... google it :)
 session: "YAML"
-
+engines:
+    session:
+        YAML:
+            session_dir: /tmp/dancer-sessions
 # It's pretty straightforward...
 environment: "development"
 
