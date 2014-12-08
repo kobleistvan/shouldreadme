@@ -11,48 +11,52 @@
                 </div>
             </div>
         </nav> <!-- END  menu section -->
-
+        
         <div class="container-fluid editor-container">
             <!-- starting methods -->
             <div class="starting-methods">
-                <h2 class="text-center">What starting option suits you best?</h2>
+                <div class="starting-header text-center">
+                    <h1 class="text-center color-t">What option suits you best?</h1>               
+                </div>
+
                 <div class="row starting-options">
                     <div class="scratch-option col-md-4">
-                        <a href="#scratch" class="submit-option active"><h3>Start from scratch</h3></a>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                        <a href="#scratch" class="submit-option active"><h3>Start from scratch and customize your solution on your own</h3></a>
+                        <p>By choosing this option, you will still have access to our tools and tips, but you won`t receive a starting suggestion from us. It means you won`t have any predefined selected data when you get to the editor. You will customize your Terms and Conditions as you wish. It might take longer for you to analyze and decide everything on your own. If time is not an issue, than go for it!
                         </p>
                     </div>
                     <div class="details-option col-md-4">
-                        <a href="#details" class="submit-option active"><h3>Let us know more about your website</h3></a>
-                        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                        <a href="#details" class="submit-option active"><h3>Get our suggestion by letting us know more about your website</h3></a>
+                        <p>Our suggestion means that when you get to the editor, you will have some predefined data selected that we though it whould be suitable for you. In order to give you a suggestion as customized as possible, you let us know more about your website by answering a few questions. Won`t take too long, we promise! Of course that you can still add a personal touch by checking the suggestion and edit if necessary.  
                         </p>
                     </div>
                     <div class="upload-option col-md-4">
-                        <a href="#upload" class="submit-option disabled"><h3>Upload file</h3></a>
-                        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                        <a href="#upload" class="submit-option disabled"><h3>Get our suggestion by uploading your Terms and Conditions file</h3></a>
+                        <p>This option offers a suggestion as customized as possible in few seconds, based on your written Terms and Conditions. It is based on parsing the text and searching for patterns that describe different concepts in legal terms. This option is not implemented yet, but we can`t wait to bring it to life soon! 
                         </p>
                     </div>
                 </div>
                 <div class=" text-center">
-                    <span class="open-options hide glyphicon glyphicon-chevron-down" aria-hidden="true"></span>    
+                    
+                    <span class="open-options hide glyphicon glyphicon-chevron-down" aria-hidden="true"><hr/></span>    
                 </div>
             </div><!--END starting methods -->
             <!-- details section -->
             <form class="details hide">
                 <a class="linked" name="#details"></a>
-                <h2>Select the categories that best describe you website</h2>
+                <h3>Select the categories that best describe you website</h3>
                 <div class="checkboxes">
-                    <input type="checkbox" value="social"> Social <br/>
-                    <input type="checkbox" value="content-sharing"> Content Sharing <br/>
-                    <input type="checkbox" value="blog"  disabled> Blog <br/>
-                    <input type="checkbox" value="e-commerce"  disabled> E-commerce <br/>
-                    <input type="checkbox" value="presentation"  disabled> Presentation <br/>
-                    <input type="checkbox" value="catalog"  disabled> Online Business Catalog <br/>
+                    <input type="checkbox" value="social"> Social </br>
+                    <input type="checkbox" value="content-sharing"> Content Sharing </br>
+                    <input type="checkbox" value="blog"  disabled> Blog </br>
+                    <input type="checkbox" value="e-commerce"  disabled> E-commerce </br>
+                    <input type="checkbox" value="presentation"  disabled> Presentation </br>
+                    <input type="checkbox" value="catalog"  disabled> Online Business Catalog </br>
                 </div>
-                <p class="not-implemented">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                <p class="not-implemented">This is just a simple sample. This section will contain more strategical questions that will help us give you the a personalized suggestion. COMING SOON
                 </p>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-info">Get suggestions</button>
+                    <button type="submit" class="btn btn-info">GET OUR SUGGESTIONS</button>
                 </div>
             </form><!-- END details section -->
 
