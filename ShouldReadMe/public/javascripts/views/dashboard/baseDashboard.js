@@ -9,6 +9,7 @@ SRM.Views = SRM.Views || {};
         template: JST['public/javascripts/templates/dashboard/baseDashboard.hbs'],
         el: '#main',
         events: {
+            'click .go-to-preview' : 'generatePreview'
         },
 
         initialize: function (options) {
@@ -27,17 +28,18 @@ SRM.Views = SRM.Views || {};
             
             this.editPanel = new SRM.Views.EditPanel();
             this.editPanel.render();
-
-            this.faqPanel = new SRM.Views.FaqPanel({parent: this});
-            this.faqPanel.render();
             
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
 
-            SRM.faqsContainer = new SRM.Views.Faqs({parent: this});
+            SRM.faqsContainer = new SRM.Views.Faqs();
             SRM.faqsContainer.render();
 
             return this;
+        },
+        generatePreview : function(){
+            var icons = this.editPanel.icons;
+            console.log(icons);
         }
         
     });

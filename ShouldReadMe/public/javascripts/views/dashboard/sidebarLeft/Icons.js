@@ -27,6 +27,9 @@ SRM.Views = SRM.Views || {};
 
         render: function () {
             this.renderTemplate(this.templateData());
+            $(".icon-container").click(function(){
+                $(this).toggleClass("active");
+            });
             return this;
         },
         
@@ -43,9 +46,6 @@ SRM.Views = SRM.Views || {};
         },
         renderItem : function(ev){
             var selectedIcon = SRM.iconsCollection.get($(ev.currentTarget).attr('id'));
-            $(".icon-container").click(function(){
-                $(this).toggleClass("active");
-            });
             
             if(selectedIcon.get('active')){
                 SRM.iconsCollection.get($(ev.currentTarget).attr('id')).set('active', false);

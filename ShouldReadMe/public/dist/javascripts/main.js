@@ -135,6 +135,7 @@ SRM.Views = SRM.Views || {};
         template: JST['public/javascripts/templates/dashboard/editPanelComponents/printItem.hbs'],
         // el: '.preview-container',
         events: {
+             "click .icon-colors li" : 'setBackground',
         },
 
         initialize: function (options) {
@@ -154,6 +155,10 @@ SRM.Views = SRM.Views || {};
             this.renderTemplate(this.templateData());
             return this;
         },
+        setBackground : function(ev){
+            var $color = $(ev.currentTarget).attr('id');
+            $(ev.currentTarget).closest(".preview-item").find(".preview-icon-border").css("background-color",$color);
+        }
     });
 
 })();
@@ -196,48 +201,6 @@ SRM.Views = SRM.Views || {};
             
             return this;
         },
-    });
-
-})();
-
-/*global SRM, Backbone, JST */
-
-SRM.Views = SRM.Views || {};
-
-(function () {
-    'use strict';
-
-    SRM.Views.FaqPanel = Backbone.View.extend({
-        template: JST['public/javascripts/templates/dashboard/editPanelComponents/faqPanel.hbs'],
-        el: '.faq-panel',
-        events: {
-        },
-        
-        defaults : {
-        },
-
-        initialize: function (options) {
-            this.options = options;
-            this.listenTo(this.options.parent, 'togglefaqpanel', this.toggleVisible);
-        },
-
-        templateData: function() {
-            return {
-                faqstubs: [
-                    {'question': 'What is this madness?', 'answer':'Madness, I tell you!'},
-                    {'question': 'Will it end?', 'answer':'At 10 AM !'}
-                ]
-            }       
-        },
-
-        render: function () {
-            this.renderTemplate(this.templateData());
-            return this;
-        },
-        
-        toggleVisible: function(active) {
-            $('.faq-panel').toggleClass('hide');
-        }
     });
 
 })();
@@ -312,6 +275,9 @@ SRM.Views = SRM.Views || {};
 
         render: function () {
             this.renderTemplate(this.templateData());
+            $(".icon-container").click(function(){
+                $(this).toggleClass("active");
+            });
             return this;
         },
         
@@ -328,9 +294,6 @@ SRM.Views = SRM.Views || {};
         },
         renderItem : function(ev){
             var selectedIcon = SRM.iconsCollection.get($(ev.currentTarget).attr('id'));
-            $(".icon-container").click(function(){
-                $(this).toggleClass("active");
-            });
             
             if(selectedIcon.get('active')){
                 SRM.iconsCollection.get($(ev.currentTarget).attr('id')).set('active', false);
@@ -418,6 +381,7 @@ SRM.Views = SRM.Views || {};
         template: JST['public/javascripts/templates/dashboard/baseDashboard.hbs'],
         el: '#main',
         events: {
+            'click .go-to-preview' : 'generatePreview'
         },
 
         initialize: function (options) {
@@ -436,17 +400,18 @@ SRM.Views = SRM.Views || {};
             
             this.editPanel = new SRM.Views.EditPanel();
             this.editPanel.render();
-
-            this.faqPanel = new SRM.Views.FaqPanel({parent: this});
-            this.faqPanel.render();
             
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
 
-            SRM.faqsContainer = new SRM.Views.Faqs({parent: this});
+            SRM.faqsContainer = new SRM.Views.Faqs();
             SRM.faqsContainer.render();
 
             return this;
+        },
+        generatePreview : function(){
+            var icons = this.editPanel.icons;
+            console.log(icons);
         }
         
     });

@@ -9,6 +9,7 @@ SRM.Views = SRM.Views || {};
         template: JST['public/javascripts/templates/dashboard/editPanelComponents/printItem.hbs'],
         // el: '.preview-container',
         events: {
+             "click .icon-colors li" : 'setBackground',
         },
 
         initialize: function (options) {
@@ -28,6 +29,10 @@ SRM.Views = SRM.Views || {};
             this.renderTemplate(this.templateData());
             return this;
         },
+        setBackground : function(ev){
+            var $color = $(ev.currentTarget).attr('id');
+            $(ev.currentTarget).closest(".preview-item").find(".preview-icon-border").css("background-color",$color);
+        }
     });
 
 })();
