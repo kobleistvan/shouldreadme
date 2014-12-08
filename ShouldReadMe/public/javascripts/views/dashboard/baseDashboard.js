@@ -47,8 +47,29 @@ SRM.Views = SRM.Views || {};
             return this;
         },
         generatePreview : function(){
-            var icons = this.editPanel.icons;
-            console.log(icons);
+            var $icons = this.editPanel.icons,
+                userIcons = [];
+                
+            console.log($icons);
+            $icons.forEach(function(el){
+               userIcons.push({
+                   icon_id : el.id,
+                   color   : $('#'+el.id+'.preview-item .icon-colors .selected').attr('id'),
+                   user_description : $('#'+el.id+'.preview-item .user_defined_descr').val()
+               }) 
+            });
+                debugger;
+           $.ajax({
+            type : 'POST',
+            url : '/fineprint',
+            data: {
+                icons : $.toJSON(userIcons),
+            },
+            dataType : 'json',
+            success : function(data) {
+                
+            }
+           });
         }
         
     });

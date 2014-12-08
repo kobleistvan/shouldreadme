@@ -34,7 +34,7 @@ this["JST"]["public/javascripts/templates/dashboard/editPanelComponents/printIte
     + escapeExpression(((helper = (helper = helpers.icon_id || (depth0 != null ? depth0.icon_id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"icon_id","hash":{},"data":data}) : helper)))
     + "\">\n    <div class=\"icon-colors\">\n        <ul>\n            <li class=\"white-bgk\" id=\"white\"></li>\n            <li class=\"red-bkg\" id=\"#e8221c\"></li>\n            <li class=\"green-bkg\" id=\"#59AC59\"></li>\n            <li class=\"blue-bkg\" id=\"#65B5EB\"></li>\n        </ul>\n    </div>\n    <div class=\"preview-icon-border\"><img src=\""
     + escapeExpression(((helper = (helper = helpers.file_name || (depth0 != null ? depth0.file_name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"file_name","hash":{},"data":data}) : helper)))
-    + "\" class=\"preview-icon\">\n    </div>\n    <input type=\"text\" name=\"user_defined_descr\" placeholder=\"Short description\">\n</div>";
+    + "\" class=\"preview-icon\">\n    </div>\n    <input type=\"text\" class=\"user_defined_descr\" name=\"user_defined_descr\" placeholder=\"Short description\">\n</div>";
 },"useData":true});
 
 

@@ -30,7 +30,11 @@ SRM.Views = SRM.Views || {};
             return this;
         },
         setBackground : function(ev){
-            var $color = $(ev.currentTarget).attr('id');
+            var $color = $(ev.currentTarget).attr('id'),
+                $currentIcon = $(ev.currentTarget).closest('.preview-item').attr('id');
+            // debugger;
+            $('#'+$currentIcon + '.icon-colors li').removeClass('selected');
+            $(ev.currentTarget).addClass('selected');
             $(ev.currentTarget).closest(".preview-item").find(".preview-icon-border").css("background-color",$color);
         }
     });
