@@ -100,7 +100,6 @@ post '/register' => sub {
 
 # Last resort...
 any qr{.*} => sub {
-    warn "dassadd\n\n\n\n";
     template 'launch';
 };
 

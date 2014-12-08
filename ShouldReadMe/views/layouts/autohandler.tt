@@ -9,11 +9,10 @@
     </script>
     
         
-    <link rel="stylesheet" href="dist/css/main.css" />
-    <!--<link rel="stylesheet" href='/bower_components/bootstrap/dist/css/bootstrap.min.css'/>-->
-    <script src="dist/javascripts/vendor.js"></script>
-    <script src="dist/javascripts/templates.js"></script>
-    <script src="dist/javascripts/main.js"></script>
+    <link rel="stylesheet" href="/dist/css/main.css" />
+    <script src="/dist/javascripts/vendor.js"></script>
+    <script src="/dist/javascripts/templates.js"></script>
+    <script src="/dist/javascripts/main.js"></script>
 </head>
 <body>
     <div id="main">
