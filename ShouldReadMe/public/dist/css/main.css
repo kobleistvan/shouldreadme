@@ -173,7 +173,7 @@ a:hover, a:active, a:focus{
 	padding-left: 77px;
 }
 .instructions h3:after{
-	content: url("images/instructions2.png");
+	content: url("/images/instructions2.png");
 	height: 10px;
 	width: auto;
 	zoom: 0.55;
@@ -358,6 +358,9 @@ h3{
 
 .preview-container{
 	padding: 0 15px;
+}
+.preview-item div{
+	floating : left;
 }
 
 .preview-section,

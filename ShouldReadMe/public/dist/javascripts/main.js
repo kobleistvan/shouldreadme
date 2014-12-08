@@ -166,6 +166,90 @@ SRM.Views = SRM.Views || {};
 (function () {
     'use strict';
 
+    SRM.Views.FaqPanel = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/editPanelComponents/faqPanel.hbs'],
+        el: '.faq-panel',
+        events: {
+        },
+        
+        defaults : {
+        },
+
+        initialize: function (options) {
+            this.options = options;
+            this.listenTo(this.options.parent, 'togglefaqpanel', this.toggleVisible);
+        },
+
+        templateData: function() {
+            return {
+                faqstubs: [
+                    {'question': 'What is this madness?', 'answer':'Madness, I tell you!'},
+                    {'question': 'Will it end?', 'answer':'At 10 AM !'}
+                ]
+            }       
+        },
+
+        render: function () {
+            this.renderTemplate(this.templateData());
+            return this;
+        },
+        
+        toggleVisible: function() {
+            $('.faq-panel').toggleClass('hide');
+        }
+    });
+
+})();
+
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
+    SRM.Views.QuizPanel = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/editPanelComponents/quizPanel.hbs'],
+        el: '.quiz-panel',
+        events: {
+        },
+        
+        defaults : {
+        },
+
+        initialize: function (options) {
+            this.options = options;
+            this.listenTo(this.options.parent, 'togglequizpanel', this.toggleVisible);
+        },
+
+        templateData: function() {
+            return {
+                quizstubs: [
+                    {'question': 'What is this madness?', 'answer':'Madness, I tell you!'},
+                    {'question': 'Will it end?', 'answer':'At 10 AM !'}
+                ]
+            }       
+        },
+
+        render: function () {
+            this.renderTemplate(this.templateData());
+            return this;
+        },
+        
+        toggleVisible: function() {
+            $('.quiz-panel').toggleClass('hide');
+        }
+    });
+
+})();
+
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
     SRM.Views.SidebarTips = Backbone.View.extend({
         template: JST['public/javascripts/templates/dashboard/tips.hbs'],
         el: '.tips-section',
@@ -328,6 +412,58 @@ SRM.Views = SRM.Views || {};
 (function () {
     'use strict';
 
+    SRM.Views.Quiz = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/quiz.hbs'],
+        el: '.quiz-section',
+        events: {
+            'toggle .toggle.quiz-toggle': 'toggleKnob',
+        },
+
+        initialize: function (options) {
+            this.options = options;
+        },
+
+        templateData: function() {
+            return {}       
+        },
+
+        render: function() {
+            this.renderTemplate(this.templateData());
+            $('.quiz-toggle').toggles({
+                clickable: !$(this).hasClass('noclick'),
+                dragable: !$(this).hasClass('nodrag'),
+                click: ($(this).attr('rel')) ? $('.'+$(this).attr('rel')) : undefined,
+                on: false,
+                checkbox: ($(this).data('checkbox')) ? $('.'+$(this).data('checkbox')) : undefined,
+                ontext: $(this).data('ontext') || 'ON',
+                offtext: $(this).data('offtext') || 'OFF'
+            });
+
+            return this;
+        },
+        
+        toggleKnob : function (e, active) {
+            if (active) 
+                $(".quiz-container").removeClass("hide");
+            else 
+                $(".quiz-container").addClass("hide");
+            this.toggleQuizSection();
+        },
+        
+        toggleQuizSection: function() {
+            this.options.parent.trigger('togglequizpanel');
+        },
+    });
+
+})();
+
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
     SRM.Views.Dashboard = Backbone.View.extend({
         template: JST['public/javascripts/templates/dashboard/baseDashboard.hbs'],
         el: '#main',
@@ -381,13 +517,11 @@ SRM.Views = SRM.Views || {};
                    user_description : $('#'+el.id+'.preview-item .user_defined_descr').val()
                }) 
             });
-                debugger;
+
            $.ajax({
             type : 'POST',
             url : '/fineprint',
-            data: {
-                icons : $.toJSON(userIcons),
-            },
+            data: {icons : userIcons},
             dataType : 'json',
             success : function(data) {
                 
@@ -452,15 +586,7 @@ SRM.Routers.SrmRoutes = Backbone.Router.extend({
 
 })();
 $("document").ready(function($){
-    var nav = $('.main-menu');
 
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            nav.addClass("navbar-fixed-top");
-        } else {
-            nav.removeClass("navbar-fixed-top");
-        }
-    });
     $('#get-st').click(function(){
         window.location.href = '/get_started';
     })

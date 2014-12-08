@@ -58,13 +58,11 @@ SRM.Views = SRM.Views || {};
                    user_description : $('#'+el.id+'.preview-item .user_defined_descr').val()
                }) 
             });
-                debugger;
+
            $.ajax({
             type : 'POST',
             url : '/fineprint',
-            data: {
-                icons : $.toJSON(userIcons),
-            },
+            data: {icons : userIcons},
             dataType : 'json',
             success : function(data) {
                 
