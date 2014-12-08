@@ -232,7 +232,7 @@ h1, h2{
 }
 
 .instructions p{
-	padding-bottom: 20px;
+	/*padding-bottom: 20px;*/
 }
 
 .starting-options .col-md-4{
@@ -523,7 +523,7 @@ h3{
 }
 
 .go-to-preview{
-    margin:20px auto;
+    margin-left:50%;
 }
 
 .faq-head, .quiz-head{
