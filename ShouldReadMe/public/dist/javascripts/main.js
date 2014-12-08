@@ -22,6 +22,7 @@ $(document).ready(function () {
         console.log('not landing page...');
     }
 });
+
 /*global SRM, Backbone*/
 
 SRM.Models = SRM.Models || {};
