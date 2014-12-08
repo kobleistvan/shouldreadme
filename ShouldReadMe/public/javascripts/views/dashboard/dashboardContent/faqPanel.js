@@ -33,7 +33,7 @@ SRM.Views = SRM.Views || {};
             return this;
         },
         
-        toggleVisible: function(active) {
+        toggleVisible: function() {
             $('.faq-panel').toggleClass('hide');
         }
     });

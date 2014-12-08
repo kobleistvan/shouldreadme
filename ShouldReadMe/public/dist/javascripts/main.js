@@ -55,40 +55,6 @@ SRM.Models = SRM.Models || {};
 
 /*global SRM, Backbone*/
 
-SRM.Models = SRM.Models || {};
-
-(function () {
-    'use strict';
-
-    SRM.Models.Faq = Backbone.Model.extend({
-
-        // url: '/api/faq',
-
-        initialize: function() {
-        },
-
-        defaults: {
-            faq_id : '',
-            question_id: '',
-            question: '',
-            answer: '',
-            icon : '',
-            created_at : '',
-            updated_at : ''
-        },
-
-        validate: function(attrs, options) {
-        },
-
-        parse: function(response, options)  {
-            return response;
-        }
-    });
-
-})();
-
-/*global SRM, Backbone*/
-
 SRM.Collections = SRM.Collections || {};
 
 (function () {
@@ -104,22 +70,6 @@ SRM.Collections = SRM.Collections || {};
                 value.active = false;
                 value.id = parseInt( value.id );
             });
-            return response;
-        },
-    });
-})();
-/*global SRM, Backbone*/
-
-SRM.Collections = SRM.Collections || {};
-
-(function () {
-    'use strict';
-
-    SRM.Collections.FaqCollection = Backbone.Collection.extend({
-        model: SRM.Models.Faq,
-        url: '/faq',
-        
-        parse: function(response, options)  {
             return response;
         },
     });
@@ -201,6 +151,90 @@ SRM.Views = SRM.Views || {};
             
             return this;
         },
+    });
+
+})();
+
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
+    SRM.Views.FaqPanel = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/editPanelComponents/faqPanel.hbs'],
+        el: '.faq-panel',
+        events: {
+        },
+        
+        defaults : {
+        },
+
+        initialize: function (options) {
+            this.options = options;
+            this.listenTo(this.options.parent, 'togglefaqpanel', this.toggleVisible);
+        },
+
+        templateData: function() {
+            return {
+                faqstubs: [
+                    {'question': 'What is this madness?', 'answer':'Madness, I tell you!'},
+                    {'question': 'Will it end?', 'answer':'At 10 AM !'}
+                ]
+            }       
+        },
+
+        render: function () {
+            this.renderTemplate(this.templateData());
+            return this;
+        },
+        
+        toggleVisible: function() {
+            $('.faq-panel').toggleClass('hide');
+        }
+    });
+
+})();
+
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
+    SRM.Views.QuizPanel = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/editPanelComponents/quizPanel.hbs'],
+        el: '.quiz-panel',
+        events: {
+        },
+        
+        defaults : {
+        },
+
+        initialize: function (options) {
+            this.options = options;
+            this.listenTo(this.options.parent, 'togglequizpanel', this.toggleVisible);
+        },
+
+        templateData: function() {
+            return {
+                quizstubs: [
+                    {'question': 'What is this madness?', 'answer':'Madness, I tell you!'},
+                    {'question': 'Will it end?', 'answer':'At 10 AM !'}
+                ]
+            }       
+        },
+
+        render: function () {
+            this.renderTemplate(this.templateData());
+            return this;
+        },
+        
+        toggleVisible: function() {
+            $('.quiz-panel').toggleClass('hide');
+        }
     });
 
 })();
@@ -334,15 +368,12 @@ SRM.Views = SRM.Views || {};
         },
 
         templateData: function() {
-            SRM.faqCollection = new SRM.Collections.FaqCollection();
-            SRM.faqCollection.fetch({async: false}); 
-
-            return {faqs : SRM.faqCollection.toJSON()}       
+            return {}       
         },
 
         render: function() {
             this.renderTemplate(this.templateData());
-            $('.toggle').toggles({
+            $('.faq-toggle').toggles({
                 clickable: !$(this).hasClass('noclick'),
                 dragable: !$(this).hasClass('nodrag'),
                 click: ($(this).attr('rel')) ? $('.'+$(this).attr('rel')) : undefined,
@@ -365,6 +396,58 @@ SRM.Views = SRM.Views || {};
         
         toggleFaqSection: function() {
             this.options.parent.trigger('togglefaqpanel');
+        },
+    });
+
+})();
+
+/*global SRM, Backbone, JST */
+
+SRM.Views = SRM.Views || {};
+
+(function () {
+    'use strict';
+
+    SRM.Views.Quiz = Backbone.View.extend({
+        template: JST['public/javascripts/templates/dashboard/quiz.hbs'],
+        el: '.quiz-section',
+        events: {
+            'toggle .toggle.quiz-toggle': 'toggleKnob',
+        },
+
+        initialize: function (options) {
+            this.options = options;
+        },
+
+        templateData: function() {
+            return {}       
+        },
+
+        render: function() {
+            this.renderTemplate(this.templateData());
+            $('.quiz-toggle').toggles({
+                clickable: !$(this).hasClass('noclick'),
+                dragable: !$(this).hasClass('nodrag'),
+                click: ($(this).attr('rel')) ? $('.'+$(this).attr('rel')) : undefined,
+                on: false,
+                checkbox: ($(this).data('checkbox')) ? $('.'+$(this).data('checkbox')) : undefined,
+                ontext: $(this).data('ontext') || 'ON',
+                offtext: $(this).data('offtext') || 'OFF'
+            });
+
+            return this;
+        },
+        
+        toggleKnob : function (e, active) {
+            if (active) 
+                $(".quiz-container").removeClass("hide");
+            else 
+                $(".quiz-container").addClass("hide");
+            this.toggleQuizSection();
+        },
+        
+        toggleQuizSection: function() {
+            this.options.parent.trigger('togglequizpanel');
         },
     });
 
@@ -400,12 +483,21 @@ SRM.Views = SRM.Views || {};
             
             this.editPanel = new SRM.Views.EditPanel();
             this.editPanel.render();
+
+            this.faqPanel = new SRM.Views.FaqPanel({parent: this});
+            this.faqPanel.render();
+
+            this.quizPanel = new SRM.Views.QuizPanel({parent: this});
+            this.quizPanel.render();
             
             this.tips = new SRM.Views.SidebarTips();
             this.tips.render();
 
-            SRM.faqsContainer = new SRM.Views.Faqs();
+            SRM.faqsContainer = new SRM.Views.Faqs({parent: this});
             SRM.faqsContainer.render();
+
+            SRM.quizContainer = new SRM.Views.Quiz({parent: this});
+            SRM.quizContainer.render();
 
             return this;
         },
