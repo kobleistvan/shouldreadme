@@ -105,8 +105,8 @@
             <div class="get-started text-center">
                 <h2>Let`s get started!</h2>
                 <div class="row">
-                    <button type="button" class="login-btn btn btn-lg btn-default" data-toggle="modal" data-target="#signInModal">Sign in</button>
-                    <button type="button" class="signup-btn btn btn-lg btn-default" data-toggle="modal" data-target="#registerModal">Register</button>
+                    <button type="button" class="login-btn btn btn-lg btn-info" data-toggle="modal" data-target="#signInModal">Sign in</button>
+                    <button type="button" class="signup-btn btn btn-lg btn-danger" data-toggle="modal" data-target="#registerModal">Register</button>
                 </div>
             </div>
             <!-- sign up modal -->
