@@ -9,9 +9,6 @@ _.extend(window.SRM, {
     Routers: {},
     init: function () {
         'use strict';
-        console.log("DASDASDSA");
-
-        console.log(SRM);
         SRM.srmRouter = new SRM.Routers.SrmRoutes();
 
         Backbone.history.start();
@@ -20,4 +17,8 @@ _.extend(window.SRM, {
 $(document).ready(function () {
     'use strict';
     SRM.init();
+    
+    if (document.location.pathname != '/') {
+        console.log('not landing page');
+    }
 });

@@ -32,3 +32,15 @@ session: "YAML"
 
 # It's pretty straightforward...
 environment: "development"
+
+# Take a wild guess
+plugins:
+  DBIC:
+    default:
+        dsn: dbi:mysql:shouldreadme
+        schema_class: Model::Schema
+        user: root
+        password: tac
+        options:
+        RaiseError: 1
+        PrintError: 1
