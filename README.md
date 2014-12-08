@@ -1,3 +1,13 @@
+##### Important notice: URLs are:
+http://shouldreadme.kobleistvan.koding.io
+
+If not working:
+http://shouldreadme.kobleistvan.koding.io:5000
+http://kobleistvan.koding.io:5000
+http://kobleistvan.koding.io
+
+===========
+
 # ShouldReadMe
 ## 2014 Koding Global Virtual Hackaton submission
 [![Koding Hackathon](/img/badge.png?raw=true "Koding Hackathon")](https://koding.com/Hackathon)
