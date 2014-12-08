@@ -232,7 +232,7 @@ h1, h2{
 
 .starting-options .col-md-4{
 	box-sizing: border-box;
-	padding:0 30px;	
+	/*padding:0 30px;	*/
 }
 
 .col-md-3, .col-md-6{
@@ -247,7 +247,7 @@ h1, h2{
 /*header style*/
 .main-menu, .menu{
 	top:300px;
-	border:none;
+	border-bottom: 1px solid  #98a5a6;
 	height:65px;
 	background-color: #f8fafb;
 	padding-top:5px;
@@ -505,6 +505,7 @@ h3{
 	width:50px;
 	display:inline;
 	float:right;
+	margin-top: -32px;
 }
 
 .toggle-on{
@@ -514,6 +515,10 @@ h3{
 .faq-section, .quiz-section{
 	margin-top:20px;
 	width:90%;
+}
+
+.go-to-preview{
+    margin:20px auto;
 }
 
 .faq-head, .quiz-head{

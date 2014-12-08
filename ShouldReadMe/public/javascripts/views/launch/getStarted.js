@@ -10,7 +10,7 @@ $("document").ready(function($){
 
     $(".details-option").click(function(ev){
         ev.preventDefault();
-        $(this).toggleClass("hide");
+        // $(this).toggleClass("hide");
         $(".starting-methods p").toggleClass("hide");
         $(".details").toggleClass("hide");
     });
