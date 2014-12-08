@@ -18,8 +18,9 @@ prefix '/faq' => sub {
         #                     updated_at    => $faq->updated_at(),
         #                  }
         #  }
+        
         template 'faq', {
-            parameter => 'testparam'
+            parameter => to_dumper session
         };
     };
     

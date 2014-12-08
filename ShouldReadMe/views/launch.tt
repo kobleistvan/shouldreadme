@@ -5,11 +5,9 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <img class="small-logo" src="/images/logo.png">
                     <ul class="main-menu-list nav navbar-nav">
-                        <li><a href="#coming-soon"> Home </a></li>
-                        <li><a href="#coming-soon"> Sign in </a></li>
-                        <li><a href="#" id='get-st'> Get started </a></li>
-                        <li><a href="#coming-soon"> Coming soon </a></li>
-                        <li><a href="#"><img class="help-icon" src="/images/help.png"></a></li>
+                        <li><a href="/"> Home </a></li>
+                        <li><a href="#signin"> Sign in </a></li>
+                        <li><a href="#register"> Register </a></li>
                     </ul>
                 </div>
             </div>
@@ -107,12 +105,12 @@
             <div class="get-started text-center">
                 <h2>Let`s get started!</h2>
                 <div class="row">
-                    <button type="button" class="signup-btn btn btn-lg btn-default" data-toggle="modal" data-target="#signUpModal">Sign up</button>
-                    <button type="button" class="login-btn btn btn-lg btn-default" data-toggle="modal" data-target="#logInModal">Log in</button>
+                    <button type="button" class="login-btn btn btn-lg btn-default" data-toggle="modal" data-target="#signInModal">Sign in</button>
+                    <button type="button" class="signup-btn btn btn-lg btn-default" data-toggle="modal" data-target="#registerModal">Register</button>
                 </div>
             </div>
             <!-- sign up modal -->
-            <div id="signUpModal" class="modal fade">
+            <div id="registerModal" class="modal fade">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -120,7 +118,7 @@
                     <h4 class="modal-title">Sign up</h4>
                   </div>
                   <div class="modal-body">
-                    <form role="form">
+                    <form role="form" action="/register" method="POST">
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
@@ -161,7 +159,7 @@
                         </div>
                         
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='#'">Close</button>
                             <button type="submit" class="btn btn-info">Sign up</button>
                         </div>
                     </form>
@@ -171,7 +169,7 @@
             </div><!--END sign up modal -->
             
             <!-- log in modal -->
-            <div id="logInModal" class="modal fade">
+            <div id="signInModal" class="modal fade">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -179,7 +177,7 @@
                     <h4 class="modal-title">Log in</h4>
                   </div>
                   <div class="modal-body">
-                    <form role="form">
+                    <form role="form" action="/signin" method="POST">
                         <div class="form-group">
                             <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
                         </div>
@@ -187,7 +185,7 @@
                             <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='#'">Close</button>
                             <button type="submit" class="btn btn-info">Log in</button>
                         </div>
                     </form>

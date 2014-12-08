@@ -19,6 +19,6 @@ $(document).ready(function () {
     SRM.init();
     
     if (document.location.pathname != '/') {
-        console.log('not landing page');
+        console.log('not landing page...');
     }
 });

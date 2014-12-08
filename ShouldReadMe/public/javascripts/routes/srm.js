@@ -7,42 +7,37 @@ SRM.Routers = SRM.Routers || {};
 
 SRM.Routers.SrmRoutes = Backbone.Router.extend({
 	routes:{
-		'':'home',
-        'editor'     : 'createFineprint',
-        'login'      : 'login',
-        'register'   : 'register',
-        'dashboard'  : 'baseDashboard',
+		''              : 'home',
+        'signin'        : 'signin',
+        'register'      : 'register',
+        'getstarted'    : 'getstarted',
+        'dashboard'     : 'dashboard',
         // '*other': 'defaultRoute'
 	},
 
 
-	initialize: function(){
-	},
+	initialize: function(){},
 	
-	createFineprint: function(){
+	getstarted: function(){
         $('#main').html('');
         SRM.getStartedBase = new SRM.Views.GetStarted({ });
         SRM.getStartedBase.render();
 	}, 
 	
-	baseDashboard: function(){
+	dashboard: function(){
         $('#main').html('');
-        console.log("Loading dashboard..");
-       
-       SRM.baseDashboard = new SRM.Views.Dashboard();
-    //   console.log(SRM.baseDashboard);
-       
-       SRM.baseDashboard.render();
+        SRM.baseDashboard = new SRM.Views.Dashboard();
+        SRM.baseDashboard.render();
 	},
 	
-	login : function(){
-        $("#logInModal").modal('show');
+	signin : function(){
+        $("#signInModal").modal('show');
 	},
 	
 	register : function(){
-        $("#signUpModal").modal('show');
+        $("#registerModal").modal('show');
 	},
-	
+
 	defaultRoute : function(){
         document.location.href="/";
 	}
